@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Expense_TrackerUITestsLaunchTests: XCTestCase {
+class ExpenseTrackerUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

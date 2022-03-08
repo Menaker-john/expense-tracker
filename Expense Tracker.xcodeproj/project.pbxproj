@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		525EE628279B65A000419AA9 /* ColoredMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EE627279B65A000419AA9 /* ColoredMoney.swift */; };
+		528B35F027A49BCF00F52E2C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B35EF27A49BCF00F52E2C /* Extensions.swift */; };
+		528B35F227A49BF500F52E2C /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B35F127A49BF500F52E2C /* Categories.swift */; };
+		52B5DA1E27A0BC8200EACD38 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */; };
+		52B5DA2027A0BFE900EACD38 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */; };
+		52C160E42773EB33001BC665 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C160E32773EB33001BC665 /* Budget.swift */; };
+		52C160E62773EE0E001BC665 /* BudgetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C160E52773EE0E001BC665 /* BudgetListView.swift */; };
 		52C61DFE276E314000C3374A /* Expense_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61DFD276E314000C3374A /* Expense_TrackerApp.swift */; };
 		52C61E00276E314000C3374A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61DFF276E314000C3374A /* ContentView.swift */; };
 		52C61E02276E314200C3374A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52C61E01276E314200C3374A /* Assets.xcassets */; };
 		52C61E05276E314200C3374A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52C61E04276E314200C3374A /* Preview Assets.xcassets */; };
-		52C61E0F276E314200C3374A /* Expense_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E0E276E314200C3374A /* Expense_TrackerTests.swift */; };
-		52C61E19276E314200C3374A /* Expense_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E18276E314200C3374A /* Expense_TrackerUITests.swift */; };
+		52C61E0F276E314200C3374A /* ExpenseTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E0E276E314200C3374A /* ExpenseTrackerTests.swift */; };
+		52C61E19276E314200C3374A /* ExpenseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E18276E314200C3374A /* ExpenseTrackerUITests.swift */; };
 		52C61E1B276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E1A276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift */; };
+		52C61E2A276E454B00C3374A /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E29276E454B00C3374A /* BudgetView.swift */; };
+		52D3C6F927ADE7B4002BBA75 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 52D3C6F827ADE7B4002BBA75 /* Realm */; };
+		52D3C6FB27ADE7B4002BBA75 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52D3C6FA27ADE7B4002BBA75 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +44,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		525EE627279B65A000419AA9 /* ColoredMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredMoney.swift; sourceTree = "<group>"; };
+		528B35EF27A49BCF00F52E2C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		528B35F127A49BF500F52E2C /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
+		52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		52C160E32773EB33001BC665 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		52C160E52773EE0E001BC665 /* BudgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListView.swift; sourceTree = "<group>"; };
 		52C61DFA276E314000C3374A /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C61DFD276E314000C3374A /* Expense_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_TrackerApp.swift; sourceTree = "<group>"; };
 		52C61DFF276E314000C3374A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		52C61E01276E314200C3374A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52C61E04276E314200C3374A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		52C61E0A276E314200C3374A /* Expense TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Expense TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		52C61E0E276E314200C3374A /* Expense_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_TrackerTests.swift; sourceTree = "<group>"; };
+		52C61E0E276E314200C3374A /* ExpenseTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerTests.swift; sourceTree = "<group>"; };
 		52C61E14276E314200C3374A /* Expense TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Expense TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		52C61E18276E314200C3374A /* Expense_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_TrackerUITests.swift; sourceTree = "<group>"; };
+		52C61E18276E314200C3374A /* ExpenseTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerUITests.swift; sourceTree = "<group>"; };
 		52C61E1A276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		52C61E29276E454B00C3374A /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D3C6FB27ADE7B4002BBA75 /* RealmSwift in Frameworks */,
+				52D3C6F927ADE7B4002BBA75 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		528C991127920D80001CC52E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				525EE627279B65A000419AA9 /* ColoredMoney.swift */,
+				52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		52C61DF1276E314000C3374A = {
 			isa = PBXGroup;
 			children = (
@@ -94,7 +123,12 @@
 		52C61DFC276E314000C3374A /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				528C991127920D80001CC52E /* Components */,
+				52C61E28276E3FA900C3374A /* Views */,
+				52C61E27276E320C00C3374A /* Models */,
 				52C61DFD276E314000C3374A /* Expense_TrackerApp.swift */,
+				528B35F127A49BF500F52E2C /* Categories.swift */,
+				528B35EF27A49BCF00F52E2C /* Extensions.swift */,
 				52C61DFF276E314000C3374A /* ContentView.swift */,
 				52C61E01276E314200C3374A /* Assets.xcassets */,
 				52C61E03276E314200C3374A /* Preview Content */,
@@ -113,7 +147,7 @@
 		52C61E0D276E314200C3374A /* Expense TrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				52C61E0E276E314200C3374A /* Expense_TrackerTests.swift */,
+				52C61E0E276E314200C3374A /* ExpenseTrackerTests.swift */,
 			);
 			path = "Expense TrackerTests";
 			sourceTree = "<group>";
@@ -121,10 +155,28 @@
 		52C61E17276E314200C3374A /* Expense TrackerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				52C61E18276E314200C3374A /* Expense_TrackerUITests.swift */,
+				52C61E18276E314200C3374A /* ExpenseTrackerUITests.swift */,
 				52C61E1A276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift */,
 			);
 			path = "Expense TrackerUITests";
+			sourceTree = "<group>";
+		};
+		52C61E27276E320C00C3374A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52C160E32773EB33001BC665 /* Budget.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52C61E28276E3FA900C3374A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				52C61E29276E454B00C3374A /* BudgetView.swift */,
+				52C160E52773EE0E001BC665 /* BudgetListView.swift */,
+				52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,12 +189,17 @@
 				52C61DF6276E314000C3374A /* Sources */,
 				52C61DF7276E314000C3374A /* Frameworks */,
 				52C61DF8276E314000C3374A /* Resources */,
+				52629E9F2798B47D0096E501 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Expense Tracker";
+			packageProductDependencies = (
+				52D3C6F827ADE7B4002BBA75 /* Realm */,
+				52D3C6FA27ADE7B4002BBA75 /* RealmSwift */,
+			);
 			productName = "Expense Tracker";
 			productReference = 52C61DFA276E314000C3374A /* Expense Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +272,9 @@
 				Base,
 			);
 			mainGroup = 52C61DF1276E314000C3374A;
+			packageReferences = (
+				52D3C6F727ADE7B4002BBA75 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 52C61DFB276E314000C3374A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -252,12 +312,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52629E9F2798B47D0096E501 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --fix\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52C61DF6276E314000C3374A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B5DA2027A0BFE900EACD38 /* PieChartView.swift in Sources */,
+				528B35F027A49BCF00F52E2C /* Extensions.swift in Sources */,
+				52B5DA1E27A0BC8200EACD38 /* ChartsView.swift in Sources */,
+				52C160E62773EE0E001BC665 /* BudgetListView.swift in Sources */,
+				525EE628279B65A000419AA9 /* ColoredMoney.swift in Sources */,
+				52C61E2A276E454B00C3374A /* BudgetView.swift in Sources */,
 				52C61E00276E314000C3374A /* ContentView.swift in Sources */,
+				528B35F227A49BF500F52E2C /* Categories.swift in Sources */,
+				52C160E42773EB33001BC665 /* Budget.swift in Sources */,
 				52C61DFE276E314000C3374A /* Expense_TrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,7 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52C61E0F276E314200C3374A /* Expense_TrackerTests.swift in Sources */,
+				52C61E0F276E314200C3374A /* ExpenseTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C61E1B276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift in Sources */,
-				52C61E19276E314200C3374A /* Expense_TrackerUITests.swift in Sources */,
+				52C61E19276E314200C3374A /* ExpenseTrackerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,14 +508,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Expense Tracker/Preview Content\"";
+				DEVELOPMENT_TEAM = HX5TG4KYP8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -448,14 +540,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Expense Tracker/Preview Content\"";
+				DEVELOPMENT_TEAM = HX5TG4KYP8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -601,6 +696,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		52D3C6F727ADE7B4002BBA75 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.13.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52D3C6F827ADE7B4002BBA75 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52D3C6F727ADE7B4002BBA75 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		52D3C6FA27ADE7B4002BBA75 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52D3C6F727ADE7B4002BBA75 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 52C61DF2276E314000C3374A /* Project object */;
 }
