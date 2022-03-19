@@ -37,8 +37,11 @@ struct BudgetView: View {
                         } label: {
                             HStack {
                                 Text("\(record.name)")
-                                Spacer()
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text(Formatter.date.string(from: record.date))
+                                    .frame(maxWidth: .infinity, alignment: .center)
                                 ColoredMoney(amount: record.amount ?? 0, isRed: record.isExpense)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
                             }
                         }
                     } else {
@@ -88,108 +91,5 @@ struct BudgetView: View {
             ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
         }
         Divider()
-    }
-
-}
-
-struct BudgetOptionsView: View {
-    @ObservedRealmObject var budget: Budget
-    var body: some View {
-        Form {
-            Section(header: Text("About")) {
-                HStack {
-                    Text("Name")
-                        .frame(width: 100, alignment: .leading)
-                    TextField("", text: $budget.name)
-                }
-                Toggle("Advanced Budget", isOn: $budget.isAdvanced)
-            }
-
-            Section(header: Text("Date Range")) {
-                DatePicker("Start Date", selection: $budget.startDate, displayedComponents: [.date])
-                DatePicker("End Date", selection: $budget.endDate, displayedComponents: [.date])
-            }
-        }
-    }
-}
-
-struct RecordRow: View {
-    @ObservedRealmObject var record: Record
-
-    var body: some View {
-        HStack {
-            TextField("title", text: $record.name)
-            Divider()
-            if let isExpense = record.isExpense {
-                Text("\(isExpense ? "-" : "+")")
-                    .foregroundColor(isExpense ? .red : .green )
-                TextField("0", value: $record.amount, formatter: Formatter.decimal)
-                    .foregroundColor(isExpense ? .red : .green )
-                    .keyboardType(.decimalPad)
-            }
-        }
-    }
-}
-
-struct AdvancedRecordView: View {
-    @ObservedRealmObject var record: Record
-    let dateRange: ClosedRange<Date>
-    let onDuplicate: () -> Void
-
-    var body: some View {
-        Form {
-            Section(header: Text("About")) {
-                HStack {
-                    Text("Name")
-                        .frame(width: 100, alignment: .leading)
-                    TextField("", text: $record.name)
-
-                }
-                HStack {
-                    Text("Amount")
-                        .frame(width: 100, alignment: .leading)
-                    TextField("0", value: $record.amount, formatter: Formatter.decimal)
-                        .keyboardType(.decimalPad)
-                }
-
-                DatePicker("Date",
-                           selection: $record.date,
-                           in: dateRange,
-                           displayedComponents: [.date]
-                )
-
-                HStack {
-                    Text("Category")
-                    Spacer()
-                    if record.isExpense {
-                        Picker("Category", selection: $record.category) {
-                            ForEach(Array(MyCategories.keys.sorted(by: <)), id: \.self) { key in
-                                HStack {
-                                    if let category = MyCategories[key] {
-                                        Image(systemName: category.image)
-                                    }
-                                    Text(key)
-                                }.tag(key)
-                            }
-                        }.pickerStyle(MenuPickerStyle())
-                    } else {
-                        Image(systemName: "dollarsign.circle")
-                        Text("Income")
-                    }
-
-                }
-
-                VStack(alignment: .leading) {
-                    Text("Description")
-                    TextField("", text: $record.notes)
-
-                }
-            }
-
-            Button(action: onDuplicate) {
-                Text("Duplicate")
-            }
-
-        }.navigationTitle("")
     }
 }

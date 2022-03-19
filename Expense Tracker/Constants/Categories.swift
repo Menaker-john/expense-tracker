@@ -16,7 +16,7 @@ func rgb(_ r: Double, _ g: Double, _ b: Double) -> Color {
     return Color(red: r/255, green: g/255, blue: b/255, opacity: 1.0)
 }
 
-let MyCategories: [String: Category] = [
+let Categories: [String: Category] = [
     "Expense": Category(image: "e.circle", color: rgb(12, 228, 153)),
     "Groceries": Category(image: "cart", color: Color.blue),
     "Transportation": Category(image: "car", color: Color.gray),

@@ -45,7 +45,7 @@ public struct PieChartView: View {
 
         for (i, value) in values.enumerated() {
             let degrees: Double = value * 360 / sum
-            tempSlices.append(PieSliceData(startAngle: Angle(degrees: endDeg), endAngle: Angle(degrees: endDeg + degrees), text: String(format: "%.0f%%", value * 100 / sum), color: MyCategories[self.names[i]]?.color ?? .black))
+            tempSlices.append(PieSliceData(startAngle: Angle(degrees: endDeg), endAngle: Angle(degrees: endDeg + degrees), text: String(format: "%.0f%%", value * 100 / sum), color: Categories[self.names[i]]?.color ?? .black))
             endDeg += degrees
         }
         return tempSlices
@@ -93,7 +93,7 @@ struct PieChartRows: View {
             ForEach(0..<self.values.count, id: \.self) { i in
                 HStack {
                     RoundedRectangle(cornerRadius: 5.0)
-                        .fill(MyCategories[self.names[i]]?.color ?? .black)
+                        .fill(Categories[self.names[i]]?.color ?? .black)
                         .frame(width: 20, height: 20)
                     Text(self.names[i])
                     Spacer()

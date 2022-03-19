@@ -8,8 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		525EE628279B65A000419AA9 /* ColoredMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EE627279B65A000419AA9 /* ColoredMoney.swift */; };
-		528B35F027A49BCF00F52E2C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B35EF27A49BCF00F52E2C /* Extensions.swift */; };
 		528B35F227A49BF500F52E2C /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B35F127A49BF500F52E2C /* Categories.swift */; };
+		529081C527E4E0670066115D /* BudgetOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081C427E4E0670066115D /* BudgetOptionsView.swift */; };
+		529081C727E4E1A30066115D /* RecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081C627E4E1A30066115D /* RecordRowView.swift */; };
+		529081C927E4E1D30066115D /* AdvancedRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081C827E4E1D30066115D /* AdvancedRecordView.swift */; };
+		529081CB27E4E2910066115D /* Budgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081CA27E4E2910066115D /* Budgets.swift */; };
+		529081CD27E4E2990066115D /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081CC27E4E2990066115D /* Record.swift */; };
+		529081CF27E4E57E0066115D /* BudgetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081CE27E4E57E0066115D /* BudgetsView.swift */; };
+		529081D227E4E7090066115D /* FormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081D127E4E7090066115D /* FormatterExtension.swift */; };
+		529081D427E4E7CF0066115D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081D327E4E7CF0066115D /* ViewExtension.swift */; };
 		52B5DA1E27A0BC8200EACD38 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */; };
 		52B5DA2027A0BFE900EACD38 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */; };
 		52C160E42773EB33001BC665 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C160E32773EB33001BC665 /* Budget.swift */; };
@@ -45,8 +52,16 @@
 
 /* Begin PBXFileReference section */
 		525EE627279B65A000419AA9 /* ColoredMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredMoney.swift; sourceTree = "<group>"; };
-		528B35EF27A49BCF00F52E2C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		528B35F127A49BF500F52E2C /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		529081C427E4E0670066115D /* BudgetOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOptionsView.swift; sourceTree = "<group>"; };
+		529081C627E4E1A30066115D /* RecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRowView.swift; sourceTree = "<group>"; };
+		529081C827E4E1D30066115D /* AdvancedRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedRecordView.swift; sourceTree = "<group>"; };
+		529081CA27E4E2910066115D /* Budgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budgets.swift; sourceTree = "<group>"; };
+		529081CC27E4E2990066115D /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		529081CE27E4E57E0066115D /* BudgetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetsView.swift; sourceTree = "<group>"; };
+		529081D127E4E7090066115D /* FormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterExtension.swift; sourceTree = "<group>"; };
+		529081D327E4E7CF0066115D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		529081D627E4EC240066115D /* Expense-Tracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Expense-Tracker-Info.plist"; sourceTree = SOURCE_ROOT; };
 		52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 		52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		52C160E32773EB33001BC665 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
@@ -95,9 +110,25 @@
 			isa = PBXGroup;
 			children = (
 				525EE627279B65A000419AA9 /* ColoredMoney.swift */,
-				52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		529081D027E4E6EF0066115D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				529081D127E4E7090066115D /* FormatterExtension.swift */,
+				529081D327E4E7CF0066115D /* ViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		529081D527E4E9840066115D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				528B35F127A49BF500F52E2C /* Categories.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		52C61DF1276E314000C3374A = {
@@ -123,13 +154,13 @@
 		52C61DFC276E314000C3374A /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				529081D627E4EC240066115D /* Expense-Tracker-Info.plist */,
+				529081D527E4E9840066115D /* Constants */,
+				529081D027E4E6EF0066115D /* Extensions */,
 				528C991127920D80001CC52E /* Components */,
 				52C61E28276E3FA900C3374A /* Views */,
 				52C61E27276E320C00C3374A /* Models */,
 				52C61DFD276E314000C3374A /* Expense_TrackerApp.swift */,
-				528B35F127A49BF500F52E2C /* Categories.swift */,
-				528B35EF27A49BCF00F52E2C /* Extensions.swift */,
-				52C61DFF276E314000C3374A /* ContentView.swift */,
 				52C61E01276E314200C3374A /* Assets.xcassets */,
 				52C61E03276E314200C3374A /* Preview Content */,
 			);
@@ -165,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				52C160E32773EB33001BC665 /* Budget.swift */,
+				529081CA27E4E2910066115D /* Budgets.swift */,
+				529081CC27E4E2990066115D /* Record.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -172,9 +205,15 @@
 		52C61E28276E3FA900C3374A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52C61DFF276E314000C3374A /* ContentView.swift */,
+				52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */,
 				52C61E29276E454B00C3374A /* BudgetView.swift */,
 				52C160E52773EE0E001BC665 /* BudgetListView.swift */,
 				52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */,
+				529081C427E4E0670066115D /* BudgetOptionsView.swift */,
+				529081C627E4E1A30066115D /* RecordRowView.swift */,
+				529081C827E4E1D30066115D /* AdvancedRecordView.swift */,
+				529081CE27E4E57E0066115D /* BudgetsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,11 +377,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				529081D427E4E7CF0066115D /* ViewExtension.swift in Sources */,
+				529081C727E4E1A30066115D /* RecordRowView.swift in Sources */,
 				52B5DA2027A0BFE900EACD38 /* PieChartView.swift in Sources */,
-				528B35F027A49BCF00F52E2C /* Extensions.swift in Sources */,
+				529081CD27E4E2990066115D /* Record.swift in Sources */,
+				529081C927E4E1D30066115D /* AdvancedRecordView.swift in Sources */,
+				529081CF27E4E57E0066115D /* BudgetsView.swift in Sources */,
 				52B5DA1E27A0BC8200EACD38 /* ChartsView.swift in Sources */,
+				529081C527E4E0670066115D /* BudgetOptionsView.swift in Sources */,
+				529081CB27E4E2910066115D /* Budgets.swift in Sources */,
 				52C160E62773EE0E001BC665 /* BudgetListView.swift in Sources */,
 				525EE628279B65A000419AA9 /* ColoredMoney.swift in Sources */,
+				529081D227E4E7090066115D /* FormatterExtension.swift in Sources */,
 				52C61E2A276E454B00C3374A /* BudgetView.swift in Sources */,
 				52C61E00276E314000C3374A /* ContentView.swift in Sources */,
 				528B35F227A49BF500F52E2C /* Categories.swift in Sources */,
@@ -511,10 +557,10 @@
 				DEVELOPMENT_TEAM = HX5TG4KYP8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "Expense-Tracker-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -524,7 +570,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.jmenaker.Expense-Tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jmenaker.Expense-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -543,10 +589,10 @@
 				DEVELOPMENT_TEAM = HX5TG4KYP8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "Expense-Tracker-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -556,7 +602,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.jmenaker.Expense-Tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jmenaker.Expense-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

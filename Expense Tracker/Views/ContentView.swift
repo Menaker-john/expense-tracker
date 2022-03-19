@@ -10,6 +10,8 @@ import RealmSwift
 
 struct ContentView: View {
     @ObservedResults(Budgets.self) var budgetsArray
+
+#if DEBUG
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
@@ -19,6 +21,7 @@ struct ContentView: View {
     init() {
         print(getDocumentsDirectory())
     }
+#endif
 
     var body: some View {
         TabView {
@@ -30,24 +33,6 @@ struct ContentView: View {
                 .tabItem {
                     Label("Charts", systemImage: "chart.pie")
                 }
-
-        }
-
-    }
-}
-
-struct BudgetsView: View {
-    @ObservedResults(Budgets.self) var budgetsArray
-
-    var body: some View {
-        VStack {
-            if let budgets = budgetsArray.first {
-                BudgetListView(budgetsArray: budgets)
-            } else {
-                ProgressView().onAppear {
-                    $budgetsArray.append(Budgets())
-                }
-            }
         }
     }
 }

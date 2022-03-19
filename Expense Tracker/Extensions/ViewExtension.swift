@@ -1,28 +1,11 @@
 //
-//  Extensions.swift
+//  ViewExtension.swift
 //  Expense Tracker
 //
-//  Created by John Menaker on 1/28/22.
+//  Created by John Menaker on 3/18/22.
 //
 
-import Foundation
 import SwiftUI
-import UIKit
-
-extension Formatter {
-    static let money: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        return formatter
-    }()
-
-    static let decimal: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.groupingSeparator = ""
-        return formatter
-    }()
-}
 
 extension View {
     func hideKeyboard() {
