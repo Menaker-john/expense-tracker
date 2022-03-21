@@ -10,7 +10,7 @@ import RealmSwift
 
 final class Record: EmbeddedObject, ObjectKeyIdentifiable {
     @Persisted var id: ObjectId
-    @Persisted var name: String = "New Record"
+    @Persisted var name: String = ""
     @Persisted var amount: Double?
     @Persisted var date: Date = Date()
     @Persisted var category: String = "Expense"

@@ -35,6 +35,7 @@ struct ChartsView: View {
                         .padding()
                 }
             }
+
             PieChartView(
                 values: $viewModel.values.wrappedValue,
                 names: $viewModel.names.wrappedValue,

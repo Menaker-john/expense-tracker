@@ -10,7 +10,7 @@ import RealmSwift
 
 final class Budget: EmbeddedObject, ObjectKeyIdentifiable {
     @Persisted var id: ObjectId
-    @Persisted var name: String = "New Budget"
+    @Persisted var name: String = ""
     @Persisted var records: List<Record>
     @Persisted var startDate: Date = Date()
     @Persisted var endDate: Date = Date()
@@ -20,10 +20,6 @@ final class Budget: EmbeddedObject, ObjectKeyIdentifiable {
         super.init()
         self.id = ObjectId.generate()
         self.records = List<Record>()
-    }
-
-    func addRecord(newRecord: Record) {
-
     }
 
     func calculateBalance() -> Double {

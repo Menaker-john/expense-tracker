@@ -19,7 +19,7 @@ struct AdvancedRecordView: View {
                 HStack {
                     Text("Name")
                         .frame(width: 100, alignment: .leading)
-                    TextField("", text: $record.name)
+                    TextField("New Record", text: $record.name)
 
                 }
                 HStack {

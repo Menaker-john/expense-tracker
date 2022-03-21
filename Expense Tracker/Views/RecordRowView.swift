@@ -13,7 +13,7 @@ struct RecordRow: View {
 
     var body: some View {
         HStack {
-            TextField("title", text: $record.name)
+            TextField("New Record", text: $record.name)
             Divider()
             if let isExpense = record.isExpense {
                 Text("\(isExpense ? "-" : "+")")

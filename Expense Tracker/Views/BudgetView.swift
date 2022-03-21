@@ -22,7 +22,7 @@ struct BudgetView: View {
     }
 
     var body: some View {
-        TextField("", text: $budget.name)
+        TextField("New Budget", text: $budget.name)
             .font(.title)
             .padding([.top, .trailing, .leading])
         Divider()
@@ -36,7 +36,7 @@ struct BudgetView: View {
                             })
                         } label: {
                             HStack {
-                                Text("\(record.name)")
+                                Text("\(record.name != "" ? record.name : "New Record")")
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text(Formatter.date.string(from: record.date))
                                     .frame(maxWidth: .infinity, alignment: .center)
@@ -51,11 +51,11 @@ struct BudgetView: View {
                     .onMove(perform: $budget.records.move)
             }
         }.padding([.top, .bottom])
-        .if(!budget.isAdvanced) { view in
-            view.onTapGesture {
-                self.hideKeyboard()
+            .if(!budget.isAdvanced) { view in
+                view.onTapGesture {
+                    self.hideKeyboard()
+                }
             }
-        }
             .navigationBarTitle("", displayMode: .inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {

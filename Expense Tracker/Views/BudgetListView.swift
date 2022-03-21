@@ -20,7 +20,7 @@ struct BudgetListView: View {
                         NavigationLink {
                             BudgetView(budget: budget)
                         } label: {
-                            Text("\(budget.name)")
+                            Text("\(budget.name != "" ? budget.name : "New Budget")")
                             Spacer()
                             let balance = budget.calculateBalance()
                             ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
