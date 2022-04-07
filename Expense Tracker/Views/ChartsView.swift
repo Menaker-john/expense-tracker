@@ -10,7 +10,7 @@ import RealmSwift
 
 struct ChartsView: View {
     @ObservedResults(Budgets.self) var budgetsArray
-    @ObservedObject var viewModel = ContentViewModel()
+    @StateObject var viewModel = ContentViewModel()
 
     var body: some View {
         VStack {
@@ -20,7 +20,12 @@ struct ChartsView: View {
                     Picker("Budget", selection: $viewModel.budget) {
                         ForEach(budgets, id: \.self) { budget in
                             HStack {
-                                Text(budget.name)
+                                if budget.name == "" {
+                                    Text("New Budget")
+                                } else {
+                                    Text(budget.name)
+                                }
+
                             }.tag(budget as Budget?)
                         }
                     }.onAppear {
