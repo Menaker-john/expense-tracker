@@ -9,36 +9,35 @@ import SwiftUI
 import RealmSwift
 
 struct ChartsView: View {
-    @ObservedResults(Budgets.self) var budgetsArray
+    @ObservedResults(Budget.self) var budgets
     @StateObject var viewModel = ContentViewModel()
+
+    var filteredResults: Results<Budget> {
+        return budgets.filter("records.@count > 0")
+    }
 
     var body: some View {
         VStack {
-            if let firstBudget = budgetsArray.first {
-                let budgets = Array(firstBudget.budgets.filter { ($0 as Budget).isAdvanced })
-                if budgets.count > 0 {
-                    Picker("Budget", selection: $viewModel.budget) {
-                        ForEach(budgets, id: \.self) { budget in
-                            HStack {
-                                if budget.name == "" {
-                                    Text("New Budget")
-                                } else {
-                                    Text(budget.name)
-                                }
+            if budgets.count > 0 {
+                Picker("Budget", selection: $viewModel.budget) {
+                    ForEach(filteredResults, id: \.self) { budget in
+                        HStack {
+                            if budget.name == "" {
+                                Text("New Budget")
+                            } else {
+                                Text(budget.name)
+                            }
 
-                            }.tag(budget as Budget?)
-                        }
-                    }.onAppear {
-                        if viewModel.budget == nil {
-                            viewModel.budget = budgets.first
-                        }
+                        }.tag(budget as Budget?)
                     }
-                    .padding()
-                    .pickerStyle(MenuPickerStyle())
-                } else {
-                    Text("No Advanced Budgets")
-                        .padding()
+                }.onAppear {
+                    viewModel.budget = filteredResults.first
                 }
+                .padding()
+                .pickerStyle(MenuPickerStyle())
+            } else {
+                Text("Add records to a budget to use charts.")
+                    .padding()
             }
 
             PieChartView(
@@ -58,8 +57,8 @@ class ContentViewModel: ObservableObject {
         didSet {
             var categories: [String: Double] = [:]
             budget?.records.forEach { record in
-                if record.isExpense && record.category != "" && (record.amount ?? 0) > 0.0 {
-                    categories[record.category] = (record.amount ?? 0) + (categories[record.category] ?? 0)
+                if record.isExpense && record.category != "" && record.amount > 0.0 {
+                    categories[record.category] = record.amount + (categories[record.category] ?? 0.0)
                 }
             }
             names = Array(categories.keys)

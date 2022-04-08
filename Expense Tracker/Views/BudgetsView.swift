@@ -14,7 +14,7 @@ struct BudgetsView: View {
     var body: some View {
         VStack {
             if let budgets = budgetsArray.first {
-                BudgetListView(budgetsArray: budgets)
+                BudgetListView()
             } else {
                 ProgressView().onAppear {
                     $budgetsArray.append(Budgets())

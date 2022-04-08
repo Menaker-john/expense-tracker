@@ -9,14 +9,23 @@ import SwiftUI
 import RealmSwift
 
 struct BudgetListView: View {
-    @ObservedRealmObject var budgetsArray: Budgets
+    @ObservedResults(Budget.self) var budgets
     @State var searchText: String = ""
+    var searchResults: Results<Budget> {
+        if searchText.isEmpty {
+            return budgets
+        } else {
+            return budgets
+                .filter("name CONTAINS[c] %@ OR ANY records.category CONTAINS[c] %@", searchText, searchText)
+        }
+    }
 
     var body: some View {
-        VStack {
-            NavigationView {
+        NavigationView {
+            VStack {
                 SwiftUI.List {
-                    ForEach(budgetsArray.budgets, id: \.id) { budget in
+                    ForEach(searchResults
+                        .sorted(byKeyPath: "startDate", ascending: true), id: \.id) { budget in
                         NavigationLink {
                             BudgetView(budget: budget)
                         } label: {
@@ -25,20 +34,30 @@ struct BudgetListView: View {
                             let balance = budget.calculateBalance()
                             ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
                         }
-                    }.onDelete(perform: $budgetsArray.budgets.remove)
-                        .onMove(perform: $budgetsArray.budgets.move)
-                }.navigationTitle("Budgets")
+                    }
+                }.searchable(text: $searchText)
+                .navigationTitle("Budgets")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
                             Button(action: {
-                                $budgetsArray.budgets.append(Budget())
+                                $budgets.append(Budget())
                             }) {
                                 Text("Add New")
                             }
-                            EditButton()
                         }
                     }
-            }.navigationViewStyle(StackNavigationViewStyle())
-        }.padding(.bottom, 15)
+            }.padding(.bottom, 15)
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
+
+// ZStack {
+//    Rectangle()
+//        .foregroundColor(Color("LightGray"))
+//    HStack {
+//        Image(systemName: "magnifyingglass")
+//        TextField("Search..", text: $searchText)
+//    }
+//    .foregroundColor(.gray)
+//    .padding(.leading, 13)
+// }

@@ -25,7 +25,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            BudgetsView(budgetsArray: $budgetsArray)
+            BudgetListView()
                 .tabItem {
                     Label("Budgets", systemImage: "chart.bar.doc.horizontal")
                 }
