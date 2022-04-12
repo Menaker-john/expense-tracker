@@ -9,7 +9,6 @@ import SwiftUI
 import RealmSwift
 
 struct ContentView: View {
-    @ObservedResults(Budgets.self) var budgetsArray
 
 #if DEBUG
     func getDocumentsDirectory() -> URL {

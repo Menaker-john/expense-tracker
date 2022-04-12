@@ -25,6 +25,7 @@ struct BudgetView: View {
         TextField("New Budget", text: $budget.name)
             .font(.title)
             .padding([.top, .trailing, .leading])
+            .disabled(budget.isArchived)
         Divider()
         VStack {
             SwiftUI.List {
@@ -40,7 +41,7 @@ struct BudgetView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text(Formatter.date.string(from: record.date))
                                     .frame(maxWidth: .infinity, alignment: .center)
-                                ColoredMoney(amount: record.amount ?? 0, isRed: record.isExpense)
+                                ColoredMoney(amount: record.amount, isRed: record.isExpense)
                                     .frame(maxWidth: .infinity, alignment: .trailing)
                             }
                         }
@@ -49,6 +50,7 @@ struct BudgetView: View {
                     }
                 }.onDelete(perform: $budget.records.remove)
                     .onMove(perform: $budget.records.move)
+                    .disabled(budget.isArchived)
             }
         }.padding([.top, .bottom])
             .if(!budget.isAdvanced) { view in
@@ -62,9 +64,9 @@ struct BudgetView: View {
                     Button(action: {
                         showingEdit.toggle()
                     }) {
-                        Text("Advanced")
+                        Text("Settings")
                     }
-                    EditButton()
+                    EditButton().disabled(budget.isArchived)
                 }
             }
             .sheet(isPresented: $showingEdit) {
@@ -84,6 +86,7 @@ struct BudgetView: View {
                 Text("Add Expense")
             }
         }.padding([.trailing, .leading])
+            .disabled(budget.isArchived)
         Divider()
         HStack {
             Text("Balance:")

@@ -19,8 +19,12 @@ struct BudgetOptionsView: View {
                     TextField("", text: $budget.name)
                 }
                 Toggle("Advanced Budget", isOn: $budget.isAdvanced)
+                if budget.name != "" {
+                    Toggle("Archive Budget", isOn: $budget.isArchived)
+                }
             }
 
+            // TODO: On change of either startDate or endDate could allow for record dates to be outside the date range on the budget.
             Section(header: Text("Date Range")) {
                 DatePicker("Start Date", selection: $budget.startDate, displayedComponents: [.date])
                 DatePicker("End Date", selection: $budget.endDate, displayedComponents: [.date])

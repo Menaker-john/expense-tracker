@@ -10,54 +10,128 @@ import RealmSwift
 
 struct BudgetListView: View {
     @ObservedResults(Budget.self) var budgets
+
     @State var searchText: String = ""
+    @State var isSearching: Bool = false
+    @State var isEditing: Bool = false
+    @State var isShowingArchived: Bool = false
     var searchResults: Results<Budget> {
         if searchText.isEmpty {
-            return budgets
+            return self.budgets
+                .filter("isArchived = %@", isShowingArchived)
+                .sorted(byKeyPath: isShowingArchived ? "startDate" : "index", ascending: true)
         } else {
-            return budgets
+            return self.budgets
+                .filter("isArchived = %@", isShowingArchived)
                 .filter("name CONTAINS[c] %@ OR ANY records.category CONTAINS[c] %@", searchText, searchText)
+                .sorted(byKeyPath: "name", ascending: true)
+        }
+    }
+
+    func onDelete(offsets: IndexSet) {
+        if let index = offsets.first {
+            let thawedBudget = searchResults[index].thaw()
+            let thawedRealm = thawedBudget!.realm!
+            try! thawedRealm.write {
+                if let budget = thawedBudget {
+                    thawedRealm.delete(budget)
+                }
+
+                for i in index..<searchResults.count {
+                    let thawedBudget = searchResults[i].thaw()
+                    if let budget = thawedBudget {
+                        budget.index -= 1
+                    }
+                }
+            }
+        }
+    }
+
+    func onMove(source: IndexSet, destination: Int) {
+        if let oldIndex = source.first, oldIndex != destination {
+            var newIndex: Int
+            var range: CountableRange<Int>
+            var dir = 1
+            if oldIndex < destination {
+                dir = -1
+                newIndex = destination - 1
+                range = (oldIndex + 1)..<destination
+            } else {
+                newIndex = destination
+                range = newIndex..<oldIndex
+            }
+
+            let thawedBudget = searchResults[oldIndex].thaw()
+            let thawedRealm = thawedBudget!.realm!
+
+            try! thawedRealm.write {
+                if let budget = thawedBudget {
+                    budget.index = newIndex
+                }
+
+                for index in range {
+                    let thawedBudget = searchResults[index].thaw()
+                    if let budget = thawedBudget {
+                        budget.index += dir * 1
+                    }
+                }
+            }
         }
     }
 
     var body: some View {
         NavigationView {
             VStack {
-                SwiftUI.List {
-                    ForEach(searchResults
-                        .sorted(byKeyPath: "startDate", ascending: true), id: \.id) { budget in
+                SearchBar(text: $searchText, isSearching: $isSearching, isEditing: $isEditing)
+                List {
+                    ForEach(searchResults, id: \.id) { budget in
                         NavigationLink {
                             BudgetView(budget: budget)
                         } label: {
-                            Text("\(budget.name != "" ? budget.name : "New Budget")")
+                            BudgetName(name: budget.name, isArchived: budget.isArchived)
                             Spacer()
                             let balance = budget.calculateBalance()
                             ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
                         }
-                    }
-                }.searchable(text: $searchText)
-                .navigationTitle("Budgets")
+                    }.onDelete(perform: onDelete)
+                    .onMove(perform: onMove)
+                }.environment(\.editMode, .constant(isEditing ? EditMode.active : EditMode.inactive))
+                    .navigationTitle("Budgets")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
+
                             Button(action: {
-                                $budgets.append(Budget())
+                                self.isShowingArchived.toggle()
+                            }) {
+                                if self.isShowingArchived {
+                                    Text("Show Active")
+                                } else {
+                                    Text("Show Archived")
+                                }
+                            }
+
+                            Button(action: {
+                                let newBudget = Budget()
+                                if let prevIndex = budgets.sorted(byKeyPath: "index", ascending: true).last?.index {
+                                    newBudget.index = prevIndex + 1
+                                }
+                                $budgets.append(newBudget)
                             }) {
                                 Text("Add New")
-                            }
+                            }.disabled(isShowingArchived)
+
+                            Button(action: {
+                                self.isEditing.toggle()
+                            }) {
+                                if self.isEditing {
+                                    Text("Done")
+                                } else {
+                                    Text("Edit")
+                                }
+                            } .disabled(isSearching || isShowingArchived)
                         }
                     }
             }.padding(.bottom, 15)
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
-// ZStack {
-//    Rectangle()
-//        .foregroundColor(Color("LightGray"))
-//    HStack {
-//        Image(systemName: "magnifyingglass")
-//        TextField("Search..", text: $searchText)
-//    }
-//    .foregroundColor(.gray)
-//    .padding(.leading, 13)
-// }

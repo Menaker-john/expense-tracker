@@ -15,6 +15,8 @@ final class Budget: Object, ObjectKeyIdentifiable {
     @Persisted var startDate: Date = Date()
     @Persisted var endDate: Date = Date()
     @Persisted var isAdvanced: Bool = false
+    @Persisted var isArchived: Bool = false
+    @Persisted var index: Int = 0
 
     override init() {
         super.init()
@@ -35,31 +37,3 @@ final class Budget: Object, ObjectKeyIdentifiable {
     }
 
 }
-
-// final class Budget: EmbeddedObject, ObjectKeyIdentifiable {
-//    @Persisted var id: ObjectId
-//    @Persisted var name: String = ""
-//    @Persisted var records: List<Record>
-//    @Persisted var startDate: Date = Date()
-//    @Persisted var endDate: Date = Date()
-//    @Persisted var isAdvanced: Bool = false
-//
-//    override init() {
-//        super.init()
-//        self.id = ObjectId.generate()
-//        self.records = List<Record>()
-//    }
-//
-//    func calculateBalance() -> Double {
-//        var total = 0.0
-//        for record in self.records {
-//            if record.isExpense {
-//                total -= record.amount
-//            } else {
-//                total += record.amount
-//            }
-//        }
-//        return total
-//    }
-//
-// }

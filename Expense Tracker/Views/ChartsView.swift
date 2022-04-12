@@ -22,12 +22,7 @@ struct ChartsView: View {
                 Picker("Budget", selection: $viewModel.budget) {
                     ForEach(filteredResults, id: \.self) { budget in
                         HStack {
-                            if budget.name == "" {
-                                Text("New Budget")
-                            } else {
-                                Text(budget.name)
-                            }
-
+                            BudgetName(name: budget.name, isArchived: budget.isArchived)
                         }.tag(budget as Budget?)
                     }
                 }.onAppear {
