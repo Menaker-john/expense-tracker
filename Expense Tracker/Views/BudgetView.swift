@@ -22,12 +22,16 @@ struct BudgetView: View {
     }
 
     var body: some View {
-        TextField("New Budget", text: $budget.name)
-            .font(.title)
-            .padding([.top, .trailing, .leading])
-            .disabled(budget.isArchived)
-        Divider()
         VStack {
+            VStack(alignment: .leading) {
+                TextField("New Budget", text: $budget.name)
+                    .font(.title)
+                    .padding(7)
+                    .padding(.horizontal, 25)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                    .disabled(budget.isArchived)
+            }.padding()
             SwiftUI.List {
                 ForEach(budget.records, id: \.id) { record in
                     if budget.isAdvanced {

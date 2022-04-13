@@ -67,6 +67,6 @@ struct AdvancedRecordView: View {
                 Text("Duplicate")
             }
 
-        }.navigationTitle("")
+        }.navigationTitle("Record")
     }
 }
