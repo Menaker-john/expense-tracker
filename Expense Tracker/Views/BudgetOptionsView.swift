@@ -11,6 +11,7 @@ import RealmSwift
 struct BudgetOptionsView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedRealmObject var budget: Budget
+
     var body: some View {
         NavigationView {
             Form {

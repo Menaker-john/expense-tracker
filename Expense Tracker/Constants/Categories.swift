@@ -29,9 +29,4 @@ let Categories: [String: Category] = [
     "Expense": Category(image: "e.circle", color: Color.indigo),
     "Healthcare": Category(image: "stethoscope", color: Color.mint),
     "Housing": Category(image: "house", color: Color.teal)
-
-//    "Savings": Category(image: "cloud.rain", color: rgb(128, 164, 237))
-//    "Expense": Category(image: "e.circle", color: rgb(12, 228, 153)),
-//    "Healthcare": Category(image: "stethoscope", color: rgb(62, 180, 137)),
-//    "Housing": Category(image: "house", color: rgb(48, 213, 200)),
 ]

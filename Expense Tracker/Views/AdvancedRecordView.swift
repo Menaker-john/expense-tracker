@@ -59,7 +59,6 @@ struct AdvancedRecordView: View {
                 VStack(alignment: .leading) {
                     Text("Description")
                     TextField("", text: $record.notes)
-
                 }
             }
 

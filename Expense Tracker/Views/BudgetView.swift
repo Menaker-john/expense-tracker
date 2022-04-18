@@ -23,6 +23,7 @@ struct BudgetView: View {
 
     var body: some View {
         VStack {
+
             VStack(alignment: .leading) {
                 TextField("New Budget", text: $budget.name)
                     .font(.title)
@@ -31,7 +32,9 @@ struct BudgetView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
                     .disabled(budget.isArchived)
-            }.padding()
+            }
+            .padding()
+
             SwiftUI.List {
                 ForEach(budget.records, id: \.id) { record in
                     if budget.isAdvanced {
@@ -52,30 +55,33 @@ struct BudgetView: View {
                     } else {
                         RecordRow(record: record)
                     }
-                }.onDelete(perform: $budget.records.remove)
-                    .onMove(perform: $budget.records.move)
-                    .disabled(budget.isArchived)
-            }
-        }.padding([.top, .bottom])
-            .if(!budget.isAdvanced) { view in
-                view.onTapGesture {
-                    self.hideKeyboard()
                 }
+                .onDelete(perform: $budget.records.remove)
+                .onMove(perform: $budget.records.move)
+                .disabled(budget.isArchived)
             }
-            .navigationBarTitle("", displayMode: .inline)
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showingEdit.toggle()
-                    }) {
-                        Text("Settings")
-                    }
-                    EditButton().disabled(budget.isArchived)
+        }
+        .padding([.top, .bottom])
+        .if(!budget.isAdvanced) { view in
+            view.onTapGesture {
+                self.hideKeyboard()
+            }
+        }
+        .navigationBarTitle("", displayMode: .inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button(action: {
+                    showingEdit.toggle()
+                }) {
+                    Text("Settings")
                 }
+                EditButton().disabled(budget.isArchived)
             }
-            .sheet(isPresented: $showingEdit) {
-                BudgetOptionsView(budget: budget)
-            }
+        }
+        .sheet(isPresented: $showingEdit) {
+            BudgetOptionsView(budget: budget)
+        }
+
         Spacer()
         HStack {
             Button(action: {
@@ -89,8 +95,10 @@ struct BudgetView: View {
             }) {
                 Text("Add Expense")
             }
-        }.padding([.trailing, .leading])
-            .disabled(budget.isArchived)
+        }
+        .padding([.trailing, .leading])
+        .disabled(budget.isArchived)
+
         Divider()
         HStack {
             Text("Balance:")
