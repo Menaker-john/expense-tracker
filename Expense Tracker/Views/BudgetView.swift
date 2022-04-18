@@ -23,7 +23,6 @@ struct BudgetView: View {
 
     var body: some View {
         VStack {
-
             VStack(alignment: .leading) {
                 TextField("New Budget", text: $budget.name)
                     .font(.title)
