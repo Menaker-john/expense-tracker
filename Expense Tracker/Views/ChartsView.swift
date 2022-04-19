@@ -14,7 +14,6 @@ struct ChartsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Spacer()
                 HStack {
                     NavigationLink {
                         ExpensePercentView(budgets: $budgets)
@@ -25,15 +24,14 @@ struct ChartsView: View {
                     NavigationLink {
                         ExpensePercentView(budgets: $budgets)
                     } label: {
-                        Card(title: "Expense Overview")
+                        Card(title: "YTD Spending Trends")
                     }
                 }
-                Spacer()
                 HStack {
                     NavigationLink {
                         ExpensePercentView(budgets: $budgets)
                     } label: {
-                        Card(title: "Expense Overview")
+                        Card(title: "Year Over Year ")
                     }
                     NavigationLink {
                         ExpensePercentView(budgets: $budgets)
@@ -41,7 +39,6 @@ struct ChartsView: View {
                         Card(title: "Expense Overview")
                     }
                 }
-                Spacer()
                 HStack {
                     NavigationLink {
                         ExpensePercentView(budgets: $budgets)

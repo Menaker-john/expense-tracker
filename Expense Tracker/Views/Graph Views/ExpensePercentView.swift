@@ -11,29 +11,35 @@ import RealmSwift
 struct ExpensePercentView: View {
     @ObservedResults(Budget.self) var budgets
     @StateObject var viewModel = ContentViewModel()
+    @State var searchText: String = ""
 
     var filteredResults: Results<Budget> {
-        return budgets.filter("records.@count > 0")
+        if searchText.isEmpty {
+            return self.budgets
+                .filter("records.@count > 0")
+                .sorted(byKeyPath: "name", ascending: true)
+        } else {
+            return self.budgets
+                .filter("records.@count > 0")
+                .filter("name CONTAINS[c] %@", searchText)
+                .sorted(byKeyPath: "name", ascending: true)
+        }
+
     }
 
     var body: some View {
         VStack {
-            if budgets.count > 0 {
-                Picker("Budget", selection: $viewModel.budget) {
-                    ForEach(filteredResults, id: \.self) { budget in
-                        HStack {
-                            BudgetName(name: budget.name, isArchived: budget.isArchived)
-                        }.tag(budget as Budget?)
-                    }
-                }.onAppear {
-                    viewModel.budget = filteredResults.first
+            Picker("Budget", selection: $viewModel.budget) {
+                ForEach(filteredResults, id: \.self) { budget in
+                    HStack {
+                        BudgetName(name: budget.name, isArchived: budget.isArchived)
+                    }.tag(budget as Budget?)
                 }
-                .padding()
-                .pickerStyle(MenuPickerStyle())
-            } else {
-                Text("Add records to a budget to use charts.")
-                    .padding()
+            }.onAppear {
+                viewModel.budget = filteredResults.first
             }
+            .padding()
+            .pickerStyle(MenuPickerStyle())
 
             PieChartView(
                 values: $viewModel.values.wrappedValue,

@@ -15,7 +15,7 @@ struct Card: View {
             .frame(maxWidth: .infinity)
             .foregroundColor(.black)
             .padding(.vertical, 40)
-            .background(Color.gray)
+            .background(Color(.systemGray6))
             .cornerRadius(10)
     }
 }
