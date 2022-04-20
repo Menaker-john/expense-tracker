@@ -36,4 +36,10 @@ final class Budget: Object, ObjectKeyIdentifiable {
         return total
     }
 
+    func getExpenseRecordsOverZero() -> [Record] {
+        return records.filter {
+            $0.isExpense && $0.amount > 0.0
+        }
+    }
+
 }

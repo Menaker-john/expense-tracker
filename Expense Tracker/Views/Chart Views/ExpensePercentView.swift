@@ -10,6 +10,7 @@ import RealmSwift
 
 struct ExpensePercentView: View {
     @ObservedResults(Budget.self) var budgets
+    @State var budget: Budget?
     @StateObject var viewModel = ContentViewModel()
     @State var searchText: String = ""
 
@@ -29,24 +30,32 @@ struct ExpensePercentView: View {
 
     var body: some View {
         VStack {
-            Picker("Budget", selection: $viewModel.budget) {
+            Picker("Budget", selection: $budget) {
                 ForEach(filteredResults, id: \.self) { budget in
                     HStack {
                         BudgetName(name: budget.name, isArchived: budget.isArchived)
                     }.tag(budget as Budget?)
                 }
-            }.onAppear {
-                viewModel.budget = filteredResults.first
             }
+            .searchable(text: $searchText)
+//            .onAppear {
+//                viewModel.budget = filteredResults.first
+//            }
             .padding()
             .pickerStyle(MenuPickerStyle())
-
             PieChartView(
-                values: $viewModel.values.wrappedValue,
-                names: $viewModel.names.wrappedValue,
+                values: (budget?.getExpenseRecordsOverZero() ?? []).reduce(into: [:]) {(result, record) in
+                    result[record.category] = (result[record.category] ?? 0) + record.amount
+                },
                 formatter: Formatter.money,
                 widthFraction: 0.66
             )
+//            PieChartView(
+//                values: $viewModel.values.wrappedValue,
+//                names: $viewModel.names.wrappedValue,
+//                formatter: Formatter.money,
+//                widthFraction: 0.66
+//            )
         }
     }
 }

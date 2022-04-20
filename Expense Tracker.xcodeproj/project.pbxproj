@@ -110,23 +110,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		528B24F6280E1F0A008AA621 /* Graph Views */ = {
-			isa = PBXGroup;
-			children = (
-				528B24F7280E1F2E008AA621 /* ExpensePercentView.swift */,
-			);
-			path = "Graph Views";
-			sourceTree = "<group>";
-		};
 		528C991127920D80001CC52E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */,
 				525EE627279B65A000419AA9 /* ColoredMoney.swift */,
 				52ABC8042803AD410005C061 /* SearchBar.swift */,
 				52C5B3502804E4EE008AF3C2 /* BudgetName.swift */,
 				528B24F9280E21C7008AA621 /* Card.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		528E6D4A2810BD3600900D0D /* Budget Views */ = {
+			isa = PBXGroup;
+			children = (
+				528E6D4C2810BD9500900D0D /* Record Views */,
+				52C61E29276E454B00C3374A /* BudgetView.swift */,
+				52C160E52773EE0E001BC665 /* BudgetListView.swift */,
+				529081C427E4E0670066115D /* BudgetOptionsView.swift */,
+			);
+			path = "Budget Views";
+			sourceTree = "<group>";
+		};
+		528E6D4B2810BD4700900D0D /* Chart Views */ = {
+			isa = PBXGroup;
+			children = (
+				528B24F7280E1F2E008AA621 /* ExpensePercentView.swift */,
+				52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */,
+			);
+			path = "Chart Views";
+			sourceTree = "<group>";
+		};
+		528E6D4C2810BD9500900D0D /* Record Views */ = {
+			isa = PBXGroup;
+			children = (
+				529081C627E4E1A30066115D /* RecordRowView.swift */,
+				529081C827E4E1D30066115D /* AdvancedRecordView.swift */,
+			);
+			path = "Record Views";
 			sourceTree = "<group>";
 		};
 		529081D027E4E6EF0066115D /* Extensions */ = {
@@ -219,15 +241,9 @@
 		52C61E28276E3FA900C3374A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				528B24F6280E1F0A008AA621 /* Graph Views */,
+				528E6D4B2810BD4700900D0D /* Chart Views */,
+				528E6D4A2810BD3600900D0D /* Budget Views */,
 				52C61DFF276E314000C3374A /* ContentView.swift */,
-				52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */,
-				52C61E29276E454B00C3374A /* BudgetView.swift */,
-				52C160E52773EE0E001BC665 /* BudgetListView.swift */,
-				52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */,
-				529081C427E4E0670066115D /* BudgetOptionsView.swift */,
-				529081C627E4E1A30066115D /* RecordRowView.swift */,
-				529081C827E4E1D30066115D /* AdvancedRecordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

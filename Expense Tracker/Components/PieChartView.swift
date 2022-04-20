@@ -31,6 +31,7 @@ import SwiftUI
 
 @available(OSX 10.15, *)
 public struct PieChartView: View {
+    public let dict: [String: [Double]]
     public let values: [Double]
     public let names: [String]
     public let formatter: NumberFormatter
@@ -63,8 +64,20 @@ public struct PieChartView: View {
         self.formatter = formatter
         self.widthFraction = widthFraction
         self.innerRadiusFraction = innerRadiusFraction
-
     }
+
+//    public init(values: [String: Double], formatter: NumberFormatter, widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60) {
+//
+//        let sortedValues = values.sorted { (first, second) -> Bool in
+//            return first.key < second.key
+//        }
+//
+//        self.values = sortedValues.values as [Double]
+//        self.names = sortedValues.keys as [String]
+//        self.formatter = formatter
+//        self.widthFraction = widthFraction
+//        self.innerRadiusFraction = innerRadiusFraction
+//    }
 
     public var body: some View {
         GeometryReader { geometry in
