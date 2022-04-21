@@ -83,7 +83,11 @@ struct BudgetListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text: $searchText, isSearching: $isSearching, isEditing: $isEditing)
+                SearchBar(text: $searchText, isSearching: $isSearching)
+                    .onTapGesture {
+                        self.isSearching = true
+                        self.isEditing = false
+                    }
                 List {
                     ForEach(searchResults, id: \.id) { budget in
                         NavigationLink {

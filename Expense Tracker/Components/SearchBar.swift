@@ -10,7 +10,6 @@ import SwiftUI
 struct SearchBar: View {
     @Binding var text: String
     @Binding var isSearching: Bool
-    @Binding var isEditing: Bool
 
     var body: some View {
         HStack {
@@ -38,11 +37,6 @@ struct SearchBar: View {
                     }
                 )
                 .padding(.horizontal, 10)
-                .onTapGesture {
-                    self.isSearching = true
-                    // For preventing List Editing while using SearchBar
-                    self.isEditing = false
-                }
 
             if isSearching {
                 Button(action: {

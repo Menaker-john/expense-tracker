@@ -16,37 +16,37 @@ struct ChartsView: View {
             VStack {
                 HStack {
                     NavigationLink {
-                        ExpensePercentView(budgets: $budgets)
+                        ExpenseOverviewChart(budgets: $budgets)
                     } label: {
                         Card(title: "Expense Overview")
                     }
 
                     NavigationLink {
-                        ExpensePercentView(budgets: $budgets)
+                        YTDSpendingTrendsChart(budgets: $budgets)
                     } label: {
                         Card(title: "YTD Spending Trends")
                     }
                 }
                 HStack {
                     NavigationLink {
-                        ExpensePercentView(budgets: $budgets)
+                        ExpenseOverviewChart(budgets: $budgets)
                     } label: {
                         Card(title: "Year Over Year ")
                     }
                     NavigationLink {
-                        ExpensePercentView(budgets: $budgets)
+                        ExpenseOverviewChart(budgets: $budgets)
                     } label: {
                         Card(title: "Expense Overview")
                     }
                 }
                 HStack {
                     NavigationLink {
-                        ExpensePercentView(budgets: $budgets)
+                        ExpenseOverviewChart(budgets: $budgets)
                     } label: {
                         Card(title: "Expense Overview")
                     }
                     NavigationLink {
-                        ExpensePercentView(budgets: $budgets)
+                        ExpenseOverviewChart(budgets: $budgets)
                     } label: {
                         Card(title: "Expense Overview")
                     }

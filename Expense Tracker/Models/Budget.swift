@@ -42,4 +42,10 @@ final class Budget: Object, ObjectKeyIdentifiable {
         }
     }
 
+    func getExpenseTotalsPerCategory() -> [String: Double] {
+        getExpenseRecordsOverZero().reduce(into: [:]) {(result, record) in
+            result[record.category] = (result[record.category] ?? 0) + record.amount
+        }
+    }
+
 }

@@ -31,13 +31,10 @@ import SwiftUI
 
 @available(OSX 10.15, *)
 public struct PieChartView: View {
-    public let dict: [String: [Double]]
-    public let values: [Double]
-    public let names: [String]
-    public let formatter: NumberFormatter
-
-    public var widthFraction: CGFloat
-    public var innerRadiusFraction: CGFloat
+    private let names: [String]
+    private let values: [Double]
+    private let formatter: NumberFormatter
+    private let widthFraction: CGFloat = 0.66
 
     var slices: [PieSliceData] {
         let sum = values.reduce(0, +)
@@ -52,32 +49,23 @@ public struct PieChartView: View {
         return tempSlices
     }
 
-    public init(values: [Double], names: [String], formatter: NumberFormatter, widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60) {
-        let combined = zip(names, values).sorted {
-            $0.1 > $1.1
+    public init(values: [String: Double], formatter: NumberFormatter ) {
+
+        let sortedValues = values.sorted { (first, second) -> Bool in
+            return first.key < second.key
         }
-        let sortedNames = combined.map {$0.0}
-        let sortedValues = combined.map {$0.1}
 
-        self.values = sortedValues
-        self.names = sortedNames
+        var names: [String] = []
+        var values: [Double] = []
+        for (key, value) in sortedValues {
+            names.append(key)
+            values.append(value)
+        }
+
+        self.values = values
+        self.names = names
         self.formatter = formatter
-        self.widthFraction = widthFraction
-        self.innerRadiusFraction = innerRadiusFraction
     }
-
-//    public init(values: [String: Double], formatter: NumberFormatter, widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60) {
-//
-//        let sortedValues = values.sorted { (first, second) -> Bool in
-//            return first.key < second.key
-//        }
-//
-//        self.values = sortedValues.values as [Double]
-//        self.names = sortedValues.keys as [String]
-//        self.formatter = formatter
-//        self.widthFraction = widthFraction
-//        self.innerRadiusFraction = innerRadiusFraction
-//    }
 
     public var body: some View {
         GeometryReader { geometry in
@@ -88,6 +76,7 @@ public struct PieChartView: View {
                     }
                     .frame(width: widthFraction * geometry.size.width, height: widthFraction * geometry.size.width)
                 }
+
                 PieChartRows(names: self.names, values: self.values.map { self.formatter.string(from: NSNumber(value: $0)) ?? ""}, percents: self.values.map { String(format: "%.0f%%", $0 * 100 / self.values.reduce(0, +)) })
                     .padding()
             }
