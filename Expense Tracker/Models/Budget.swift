@@ -48,4 +48,12 @@ final class Budget: Object, ObjectKeyIdentifiable {
         }
     }
 
+    func getExpenseTotalsPerCategoryKVP() -> [(String, Double)] {
+        return getExpenseRecordsOverZero().map { ($0.category, $0.amount)}
+    }
+
+//    class func filterBudgetsBetweenDates(_ budgets: Results<Budget>, start: Date, end: Date ) -> Results<Budget> {
+//
+//    }
+
 }

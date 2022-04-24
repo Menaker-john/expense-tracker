@@ -38,7 +38,7 @@ struct ExpenseOverviewChart: View {
                     NavigationLink {
                         PieChartView(
                             values: budget.getExpenseTotalsPerCategory(),
-                            formatter: Formatter.money
+                            formatter: .money
                         )
                         .padding()
                         .navigationBarTitleDisplayMode(.inline)

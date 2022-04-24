@@ -18,6 +18,7 @@
 		529081D227E4E7090066115D /* FormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081D127E4E7090066115D /* FormatterExtension.swift */; };
 		529081D427E4E7CF0066115D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081D327E4E7CF0066115D /* ViewExtension.swift */; };
 		52ABC8052803AD410005C061 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABC8042803AD410005C061 /* SearchBar.swift */; };
+		52ABD1A52814A676003EA81F /* GraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABD1A42814A676003EA81F /* GraphData.swift */; };
 		52B282E6281205C400564341 /* YTDSpendingTrendsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B282E5281205C400564341 /* YTDSpendingTrendsChart.swift */; };
 		52B282E82812067000564341 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B282E72812067000564341 /* BarChartView.swift */; };
 		52B282EA2812109700564341 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B282E92812109700564341 /* DateExtension.swift */; };
@@ -34,6 +35,7 @@
 		52C61E19276E314200C3374A /* ExpenseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E18276E314200C3374A /* ExpenseTrackerUITests.swift */; };
 		52C61E1B276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E1A276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift */; };
 		52C61E2A276E454B00C3374A /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E29276E454B00C3374A /* BudgetView.swift */; };
+		52C89849281361C600295132 /* YOYTopSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C89848281361C600295132 /* YOYTopSavings.swift */; };
 		52D3C6F927ADE7B4002BBA75 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 52D3C6F827ADE7B4002BBA75 /* Realm */; };
 		52D3C6FB27ADE7B4002BBA75 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52D3C6FA27ADE7B4002BBA75 /* RealmSwift */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,7 @@
 		529081D327E4E7CF0066115D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		529081D627E4EC240066115D /* Expense-Tracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Expense-Tracker-Info.plist"; sourceTree = SOURCE_ROOT; };
 		52ABC8042803AD410005C061 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		52ABD1A42814A676003EA81F /* GraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphData.swift; sourceTree = "<group>"; };
 		52B282E5281205C400564341 /* YTDSpendingTrendsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTDSpendingTrendsChart.swift; sourceTree = "<group>"; };
 		52B282E72812067000564341 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		52B282E92812109700564341 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		52C61E18276E314200C3374A /* ExpenseTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerUITests.swift; sourceTree = "<group>"; };
 		52C61E1A276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		52C61E29276E454B00C3374A /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
+		52C89848281361C600295132 /* YOYTopSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOYTopSavings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 				528B24F7280E1F2E008AA621 /* ExpenseOverviewChart.swift */,
 				52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */,
 				52B282E5281205C400564341 /* YTDSpendingTrendsChart.swift */,
+				52C89848281361C600295132 /* YOYTopSavings.swift */,
 			);
 			path = "Chart Views";
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 			children = (
 				52C160E32773EB33001BC665 /* Budget.swift */,
 				529081CC27E4E2990066115D /* Record.swift */,
+				52ABD1A42814A676003EA81F /* GraphData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -432,12 +438,14 @@
 				52C160E62773EE0E001BC665 /* BudgetListView.swift in Sources */,
 				52C5B3512804E4EF008AF3C2 /* BudgetName.swift in Sources */,
 				525EE628279B65A000419AA9 /* ColoredMoney.swift in Sources */,
+				52C89849281361C600295132 /* YOYTopSavings.swift in Sources */,
 				529081D227E4E7090066115D /* FormatterExtension.swift in Sources */,
 				52C61E2A276E454B00C3374A /* BudgetView.swift in Sources */,
 				52B282EA2812109700564341 /* DateExtension.swift in Sources */,
 				52C61E00276E314000C3374A /* ContentView.swift in Sources */,
 				528B35F227A49BF500F52E2C /* Categories.swift in Sources */,
 				52C160E42773EB33001BC665 /* Budget.swift in Sources */,
+				52ABD1A52814A676003EA81F /* GraphData.swift in Sources */,
 				52C61DFE276E314000C3374A /* Expense_TrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,7 +614,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -638,7 +646,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

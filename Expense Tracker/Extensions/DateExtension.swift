@@ -10,11 +10,25 @@ import Foundation
 extension Date {
     static func beginningOfCurrentYear() -> Date {
         var dateComponents = Calendar.current.dateComponents([.year], from: Date())
-//        dateComponents.second = 1
-//        dateComponents.minute = 1
-//        dateComponents.hour = 1
         dateComponents.day = 1
         dateComponents.month = 1
+
+        return Calendar.current.date(from: dateComponents)!
+    }
+
+    static func endOfCurrentYear() -> Date {
+        var dateComponents = Calendar.current.dateComponents([.year], from: Date())
+        dateComponents.day = 31
+        dateComponents.month = 12
+
+        return Calendar.current.date(from: dateComponents)!
+    }
+
+    static func beginningOfPreviousYear() -> Date {
+        var dateComponents = Calendar.current.dateComponents([.year], from: Date())
+        dateComponents.day = 1
+        dateComponents.month = 1
+        dateComponents.year = (dateComponents.year ?? 1970) - 1
 
         return Calendar.current.date(from: dateComponents)!
     }

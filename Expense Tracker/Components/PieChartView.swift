@@ -69,16 +69,22 @@ public struct PieChartView: View {
 
     public var body: some View {
         GeometryReader { geometry in
-            VStack {
-                ZStack {
-                    ForEach(0..<self.values.count, id: \.self) { i in
-                        PieSlice(pieSliceData: self.slices[i])
+            ZStack {
+                RoundedRectangle(cornerRadius: 5.0)
+                    .fill(Color(.systemGray6))
+                VStack {
+                    ZStack {
+                        ForEach(0..<self.values.count, id: \.self) { i in
+                            PieSlice(pieSliceData: self.slices[i])
+                        }
+                        .frame(width: widthFraction * geometry.size.width, height: widthFraction * geometry.size.width)
                     }
-                    .frame(width: widthFraction * geometry.size.width, height: widthFraction * geometry.size.width)
-                }
-
-                PieChartRows(names: self.names, values: self.values.map { self.formatter.string(from: NSNumber(value: $0)) ?? ""}, percents: self.values.map { String(format: "%.0f%%", $0 * 100 / self.values.reduce(0, +)) })
                     .padding()
+
+                    PieChartRows(names: self.names, values: self.values.map { self.formatter.string(from: NSNumber(value: $0)) ?? ""}, percents: self.values.map { String(format: "%.0f%%", $0 * 100 / self.values.reduce(0, +)) }
+                    )
+                    .padding()
+                }
             }
         }
     }
