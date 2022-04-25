@@ -25,6 +25,7 @@
 		52B5DA1E27A0BC8200EACD38 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */; };
 		52B5DA2027A0BFE900EACD38 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */; };
 		52BD5B272816F6D000A594C4 /* ConditionalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD5B262816F6D000A594C4 /* ConditionalStack.swift */; };
+		52BD5B2A2817510700A594C4 /* BudgetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD5B292817510700A594C4 /* BudgetsService.swift */; };
 		52C160E42773EB33001BC665 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C160E32773EB33001BC665 /* Budget.swift */; };
 		52C160E62773EE0E001BC665 /* BudgetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C160E52773EE0E001BC665 /* BudgetListView.swift */; };
 		52C5B3512804E4EF008AF3C2 /* BudgetName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B3502804E4EE008AF3C2 /* BudgetName.swift */; };
@@ -36,7 +37,7 @@
 		52C61E19276E314200C3374A /* ExpenseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E18276E314200C3374A /* ExpenseTrackerUITests.swift */; };
 		52C61E1B276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E1A276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift */; };
 		52C61E2A276E454B00C3374A /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61E29276E454B00C3374A /* BudgetView.swift */; };
-		52C89849281361C600295132 /* YOYTopSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C89848281361C600295132 /* YOYTopSavings.swift */; };
+		52C89849281361C600295132 /* YOYSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C89848281361C600295132 /* YOYSavings.swift */; };
 		52D3C6F927ADE7B4002BBA75 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 52D3C6F827ADE7B4002BBA75 /* Realm */; };
 		52D3C6FB27ADE7B4002BBA75 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52D3C6FA27ADE7B4002BBA75 /* RealmSwift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 		52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		52BD5B262816F6D000A594C4 /* ConditionalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalStack.swift; sourceTree = "<group>"; };
+		52BD5B292817510700A594C4 /* BudgetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetsService.swift; sourceTree = "<group>"; };
 		52C160E32773EB33001BC665 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		52C160E52773EE0E001BC665 /* BudgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListView.swift; sourceTree = "<group>"; };
 		52C5B3502804E4EE008AF3C2 /* BudgetName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetName.swift; sourceTree = "<group>"; };
@@ -92,7 +94,7 @@
 		52C61E18276E314200C3374A /* ExpenseTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerUITests.swift; sourceTree = "<group>"; };
 		52C61E1A276E314200C3374A /* Expense_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		52C61E29276E454B00C3374A /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
-		52C89848281361C600295132 /* YOYTopSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOYTopSavings.swift; sourceTree = "<group>"; };
+		52C89848281361C600295132 /* YOYSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOYSavings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +155,7 @@
 				528B24F7280E1F2E008AA621 /* ExpenseOverviewChart.swift */,
 				52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */,
 				52B282E5281205C400564341 /* YTDSpendingTrendsChart.swift */,
-				52C89848281361C600295132 /* YOYTopSavings.swift */,
+				52C89848281361C600295132 /* YOYSavings.swift */,
 			);
 			path = "Chart Views";
 			sourceTree = "<group>";
@@ -185,6 +187,14 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		52BD5B28281750D100A594C4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				52BD5B292817510700A594C4 /* BudgetsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		52C61DF1276E314000C3374A = {
 			isa = PBXGroup;
 			children = (
@@ -208,10 +218,10 @@
 		52C61DFC276E314000C3374A /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				52BD5B28281750D100A594C4 /* Services */,
 				529081D627E4EC240066115D /* Expense-Tracker-Info.plist */,
 				529081D527E4E9840066115D /* Constants */,
 				529081D027E4E6EF0066115D /* Extensions */,
-				528C991127920D80001CC52E /* Components */,
 				52C61E28276E3FA900C3374A /* Views */,
 				52C61E27276E320C00C3374A /* Models */,
 				52C61DFD276E314000C3374A /* Expense_TrackerApp.swift */,
@@ -259,6 +269,7 @@
 		52C61E28276E3FA900C3374A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				528C991127920D80001CC52E /* Components */,
 				528E6D4B2810BD4700900D0D /* Chart Views */,
 				528E6D4A2810BD3600900D0D /* Budget Views */,
 				52C61DFF276E314000C3374A /* ContentView.swift */,
@@ -428,6 +439,7 @@
 			files = (
 				529081D427E4E7CF0066115D /* ViewExtension.swift in Sources */,
 				529081C727E4E1A30066115D /* RecordRowView.swift in Sources */,
+				52BD5B2A2817510700A594C4 /* BudgetsService.swift in Sources */,
 				52B5DA2027A0BFE900EACD38 /* PieChartView.swift in Sources */,
 				528B24FA280E21C7008AA621 /* Card.swift in Sources */,
 				528B24F8280E1F2E008AA621 /* ExpenseOverviewChart.swift in Sources */,
@@ -442,7 +454,7 @@
 				52C160E62773EE0E001BC665 /* BudgetListView.swift in Sources */,
 				52C5B3512804E4EF008AF3C2 /* BudgetName.swift in Sources */,
 				525EE628279B65A000419AA9 /* ColoredMoney.swift in Sources */,
-				52C89849281361C600295132 /* YOYTopSavings.swift in Sources */,
+				52C89849281361C600295132 /* YOYSavings.swift in Sources */,
 				529081D227E4E7090066115D /* FormatterExtension.swift in Sources */,
 				52C61E2A276E454B00C3374A /* BudgetView.swift in Sources */,
 				52B282EA2812109700564341 /* DateExtension.swift in Sources */,

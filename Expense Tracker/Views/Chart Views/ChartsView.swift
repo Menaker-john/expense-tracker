@@ -41,12 +41,12 @@ struct ChartsView: View {
                 }
                 HStack {
                     NavigationLink {
-                        YOYTopSavings(budgets: $budgets)
+                        YOYSavings(budgets: $budgets, showTopSavings: true)
                     } label: {
                         Card(title: "Top 3 YoY Savings")
                     }
                     NavigationLink {
-                        ExpenseOverviewChart(budgets: $budgets)
+                        YOYSavings(budgets: $budgets, showTopSavings: false)
                     } label: {
                         Card(title: "Bottom 3 YoY Savings")
                     }

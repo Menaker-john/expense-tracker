@@ -13,11 +13,17 @@ struct BarChartView: View {
     let formatter: NumberFormatter
     let isHorizontal: Bool
 
+    func getAbsMax() -> Double {
+        let max = values.max() ?? 1
+        let min = abs(values.min() ?? 1)
+        return max >= min ? max : min
+    }
+
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width * 0.66
             let height = geometry.size.height * 0.66
-            let maxValue = values.max() ?? 1
+            let maxValue = getAbsMax()
 
             ZStack {
                 RoundedRectangle(cornerRadius: 5.0)
@@ -25,9 +31,9 @@ struct BarChartView: View {
                 ConditionalStack(isHorizontal) {
                     ForEach(0..<self.values.count, id: \.self) { i in
                         if isHorizontal {
-                            VBarView(name: self.names[i], value: self.values[i], width: width / CGFloat(values.count), height: (height / maxValue * self.values[i]), formatter: formatter)
+                            VBarView(name: self.names[i], value: self.values[i], width: width / CGFloat(values.count), height: (height / maxValue * abs(self.values[i])), formatter: formatter)
                         } else {
-                            HBarView(name: self.names[i], value: self.values[i], width: (width / maxValue * self.values[i]), height: height / CGFloat(values.count), formatter: formatter)
+                            HBarView(name: self.names[i], value: self.values[i], width: (width / maxValue * abs(self.values[i])), height: height / CGFloat(values.count), formatter: formatter)
                         }
                     }
                 }
