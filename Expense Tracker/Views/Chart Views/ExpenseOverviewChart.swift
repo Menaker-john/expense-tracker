@@ -11,7 +11,6 @@ import RealmSwift
 struct ExpenseOverviewChart: View {
     @ObservedResults(Budget.self) var budgets
     @State var searchText: String = ""
-
     @State var isSearching: Bool = false
 
     var searchResults: Results<Budget> {
@@ -35,9 +34,11 @@ struct ExpenseOverviewChart: View {
                 }
             List {
                 ForEach(searchResults, id: \.id) { budget in
+                    let kvp = budget.getExpenseTotalsPerCategoryKVP()
                     NavigationLink {
                         PieChartView(
-                            values: budget.getExpenseTotalsPerCategory(),
+                            names: kvp.map { $0.0},
+                            values: kvp.map { $0.1},
                             formatter: .money
                         )
                         .padding()

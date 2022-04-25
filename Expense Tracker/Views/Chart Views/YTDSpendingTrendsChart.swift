@@ -35,7 +35,7 @@ struct YTDSpendingTrendsChart: View {
 
     var body: some View {
         VStack {
-            BarChartView(names: months, values: self.data, formatter: .money)
+            BarChartView(names: months, values: self.data, formatter: .money, isHorizontal: false)
         }.navigationTitle("YTD Spending Trends")
     }
 }

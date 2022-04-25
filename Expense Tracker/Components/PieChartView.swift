@@ -31,10 +31,10 @@ import SwiftUI
 
 @available(OSX 10.15, *)
 public struct PieChartView: View {
-    private let names: [String]
-    private let values: [Double]
-    private let formatter: NumberFormatter
-    private let widthFraction: CGFloat = 0.66
+    let names: [String]
+    let values: [Double]
+    let formatter: NumberFormatter
+    let widthFraction: CGFloat = 0.66
 
     var slices: [PieSliceData] {
         let sum = values.reduce(0, +)
@@ -47,24 +47,6 @@ public struct PieChartView: View {
             endDeg += degrees
         }
         return tempSlices
-    }
-
-    public init(values: [String: Double], formatter: NumberFormatter ) {
-
-        let sortedValues = values.sorted { (first, second) -> Bool in
-            return first.key < second.key
-        }
-
-        var names: [String] = []
-        var values: [Double] = []
-        for (key, value) in sortedValues {
-            names.append(key)
-            values.append(value)
-        }
-
-        self.values = values
-        self.names = names
-        self.formatter = formatter
     }
 
     public var body: some View {

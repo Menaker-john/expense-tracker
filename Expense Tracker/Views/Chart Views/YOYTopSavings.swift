@@ -10,6 +10,21 @@ import RealmSwift
 
 struct YOYTopSavings: View {
     @ObservedResults(Budget.self) var budgets
+    var names: [String] = []
+    var values: [Double] = []
+
+    init(budgets: ObservedResults<Budget>) {
+
+        let previousYearsData = calculateTotals(previousYearsBudgets)
+        let currentYearsData = calculateTotals(currentYearsBudgets)
+        let savings = calculateSavings(previous: previousYearsData, current: currentYearsData)
+        let top = topSavings(savings)
+
+        for i in 0..<top.count {
+            names.append(top[i].0)
+            values.append(top[i].1)
+        }
+    }
 
     fileprivate func calculateTotals(_ budgets: Results<Budget>) -> [String: Double] {
         let keyValuePairs = budgets.reduce(into: []) { results, budget in
@@ -26,8 +41,10 @@ struct YOYTopSavings: View {
         return data
     }
 
-    fileprivate func topFiveSavings(_ savings: [String: Double]) -> [(String, Double)] {
-        return Array(savings.sorted { $0.value > $1.value }.prefix(5))
+    fileprivate func topSavings(_ savings: [String: Double]) -> [(String, Double)] {
+        return Array(savings.sorted { $0.value > $1.value }.filter { (_: String, value: Double) in
+            value > 0
+        }.prefix(3))
     }
 
     var previousYearsBudgets: Results<Budget> {
@@ -45,20 +62,9 @@ struct YOYTopSavings: View {
     }
 
     var body: some View {
-
-        let previousYearsData = calculateTotals(previousYearsBudgets)
-        let currentYearsData = calculateTotals(currentYearsBudgets)
-        let savings = calculateSavings(previous: previousYearsData, current: currentYearsData)
-        let top5 = topFiveSavings(savings)
-
-        let names: [String] = top5.reduce(into: []) { results, value in
-            results.append(value.0)
-        }
-        let values: [Double] = top5.reduce(into: []) {results, value in
-            results.append(value.1)
-        }
-
         VStack {
-            BarChartView(names: names, values: values, formatter: .money)
-        }.navigationTitle("YOY Top Savings")    }
+            BarChartView(names: names, values: values, formatter: .money, isHorizontal: true)
+        }
+        .navigationTitle("YOY Top Savings")
+    }
 }

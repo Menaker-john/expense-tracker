@@ -24,6 +24,7 @@
 		52B282EA2812109700564341 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B282E92812109700564341 /* DateExtension.swift */; };
 		52B5DA1E27A0BC8200EACD38 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */; };
 		52B5DA2027A0BFE900EACD38 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */; };
+		52BD5B272816F6D000A594C4 /* ConditionalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD5B262816F6D000A594C4 /* ConditionalStack.swift */; };
 		52C160E42773EB33001BC665 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C160E32773EB33001BC665 /* Budget.swift */; };
 		52C160E62773EE0E001BC665 /* BudgetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C160E52773EE0E001BC665 /* BudgetListView.swift */; };
 		52C5B3512804E4EF008AF3C2 /* BudgetName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B3502804E4EE008AF3C2 /* BudgetName.swift */; };
@@ -76,6 +77,7 @@
 		52B282E92812109700564341 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		52B5DA1D27A0BC8200EACD38 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 		52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		52BD5B262816F6D000A594C4 /* ConditionalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalStack.swift; sourceTree = "<group>"; };
 		52C160E32773EB33001BC665 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		52C160E52773EE0E001BC665 /* BudgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListView.swift; sourceTree = "<group>"; };
 		52C5B3502804E4EE008AF3C2 /* BudgetName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetName.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				52C5B3502804E4EE008AF3C2 /* BudgetName.swift */,
 				528B24F9280E21C7008AA621 /* Card.swift */,
 				52B282E72812067000564341 /* BarChartView.swift */,
+				52BD5B262816F6D000A594C4 /* ConditionalStack.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				529081C927E4E1D30066115D /* AdvancedRecordView.swift in Sources */,
 				52ABC8052803AD410005C061 /* SearchBar.swift in Sources */,
 				52B5DA1E27A0BC8200EACD38 /* ChartsView.swift in Sources */,
+				52BD5B272816F6D000A594C4 /* ConditionalStack.swift in Sources */,
 				529081C527E4E0670066115D /* BudgetOptionsView.swift in Sources */,
 				52B282E6281205C400564341 /* YTDSpendingTrendsChart.swift in Sources */,
 				52B282E82812067000564341 /* BarChartView.swift in Sources */,
