@@ -10,15 +10,15 @@ import RealmSwift
 
 struct YOYSavings: View {
     @ObservedResults(Budget.self) var budgets
-    var names: [String] = []
-    var values: [Double] = []
     var showTopSavings: Bool
 
-    init(budgets: ObservedResults<Budget>, showTopSavings: Bool) {
-        self.showTopSavings = showTopSavings
-
+    var names: [String] {
         let savings = getSavings()
-        splitSavings(savings: savings)
+        return getNames(savings: savings)
+    }
+    var values: [Double] {
+        let savings = getSavings()
+        return getValues(savings: savings)
     }
 
     func getSavings() -> [(String, Double)] {
@@ -33,11 +33,20 @@ struct YOYSavings: View {
         return savings
     }
 
-    mutating func splitSavings(savings: [(String, Double)]) {
+    func getNames(savings: [(String, Double)]) -> [String] {
+        var names: [String] = []
         for i in 0..<savings.count {
             names.append(savings[i].0)
+        }
+        return names
+    }
+
+    func getValues(savings: [(String, Double)]) -> [Double] {
+        var values: [Double] = []
+        for i in 0..<savings.count {
             values.append(savings[i].1)
         }
+        return values
     }
 
     func getTitle() -> String {
@@ -64,5 +73,4 @@ struct YOYSavings: View {
         }
         .navigationTitle(getTitle())
     }
-
 }

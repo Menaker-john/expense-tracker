@@ -18,15 +18,22 @@ struct BudgetsService {
 
     static func calculateDifference(lhs: [String: Double], rhs: [String: Double]) -> [String: Double] {
         var data: [String: Double] = [:]
-        for (key, value) in lhs {
-            data[key] = (rhs[key] ?? 0.0) - value
+        var keys = Array(lhs.keys)
+        keys.append(contentsOf: rhs.keys)
+
+        for key in Set(keys) {
+            data[key] = (rhs[key] ?? 0.0) - (lhs[key] ?? 0.0)
         }
+
+//        for (key, value) in lhs {
+//            data[key] = (rhs[key] ?? 0.0) - value
+//        }
         return data
     }
 
     static func sortDifferences(_ differences: [String: Double]) -> [(String, Double)] {
-        return differences.sorted { $0.value > $1.value }.filter { (_: String, value: Double) in
-            value > 0
+        return differences.sorted { $0.value < $1.value }.filter { (_: String, value: Double) in
+            abs(value) > 0
         }
     }
 
@@ -35,6 +42,12 @@ struct BudgetsService {
         let currentYearsData = calculateTotals(current)
         let savings = calculateDifference(lhs: previousYearsData, rhs: currentYearsData)
         return sortDifferences(savings)
+    }
+
+    static func getSavings(previous: Results<Budget>, current: Results<Budget>) -> [String: Double] {
+        let previousYearsData = calculateTotals(previous)
+        let currentYearsData = calculateTotals(current)
+        return calculateDifference(lhs: previousYearsData, rhs: currentYearsData)
     }
 
     static func getTopThreeSavings(previous: Results<Budget>, current: Results<Budget>) -> [(String, Double)] {

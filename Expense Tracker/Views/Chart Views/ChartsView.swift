@@ -29,18 +29,6 @@ struct ChartsView: View {
                 }
                 HStack {
                     NavigationLink {
-                        ExpenseOverviewChart(budgets: $budgets)
-                    } label: {
-                        Card(title: "Year Over Year ")
-                    }
-                    NavigationLink {
-                        ExpenseOverviewChart(budgets: $budgets)
-                    } label: {
-                        Card(title: "Expense Overview")
-                    }
-                }
-                HStack {
-                    NavigationLink {
                         YOYSavings(budgets: $budgets, showTopSavings: true)
                     } label: {
                         Card(title: "Top 3 YoY Savings")

@@ -53,7 +53,7 @@ struct HBarView: View {
     var body: some View {
         HStack {
             Text(name)
-            Bar(width: width, height: height)
+            Bar(width: width, height: height, color: value > 0 ? .red : .green)
             Text(formatter.string(from: NSNumber(value: value)) ?? "")
                 .font(.footnote)
             Spacer()
@@ -73,7 +73,7 @@ struct VBarView: View {
             Spacer()
             Text(formatter.string(from: NSNumber(value: value)) ?? "")
                 .font(.footnote)
-            Bar(width: width, height: height)
+            Bar(width: width, height: height, color: value > 0 ? .red : .green)
             Text(name)
                 .frame(width: CGFloat(width))
                 .lineLimit(1)
@@ -86,10 +86,11 @@ struct VBarView: View {
 struct Bar: View {
     let width: Double
     let height: Double
+    let color: Color
 
     var body: some View {
         RoundedRectangle(cornerRadius: 3.0)
-            .fill(.blue)
+            .fill(color)
             .frame(width: CGFloat(width), height: CGFloat(height), alignment: .trailing)
     }
 }
