@@ -31,12 +31,12 @@ struct ChartsView: View {
                     NavigationLink {
                         YOYSavings(budgets: $budgets, showTopSavings: true)
                     } label: {
-                        Card(title: "Top 3 YoY Savings")
+                        Card(title: "Top YoY Savings")
                     }
                     NavigationLink {
                         YOYSavings(budgets: $budgets, showTopSavings: false)
                     } label: {
-                        Card(title: "Bottom 3 YoY Savings")
+                        Card(title: "Bottom YoY Savings")
                     }
                 }
                 Spacer()

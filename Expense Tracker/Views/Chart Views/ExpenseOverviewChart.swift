@@ -35,10 +35,11 @@ struct ExpenseOverviewChart: View {
             List {
                 ForEach(searchResults, id: \.id) { budget in
                     let kvp = budget.getExpenseTotalsPerCategoryKVP()
+                    let data = Dictionary(kvp, uniquingKeysWith: { $0 + $1 }).sorted { $0.value > $1.value }
                     NavigationLink {
                         PieChartView(
-                            names: kvp.map { $0.0},
-                            values: kvp.map { $0.1},
+                            names: data.map { $0.0},
+                            values: data.map { $0.1},
                             formatter: .money
                         )
                         .padding()

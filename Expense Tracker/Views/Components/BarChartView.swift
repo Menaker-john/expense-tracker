@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct BarChartView: View {
-    let names: [String]
-    let values: [Double]
+    var names: [String] = []
+    var values: [Double] = []
     let formatter: NumberFormatter
     let isHorizontal: Bool
+
+    init(data: [(String, Double)], formatter: NumberFormatter, isHorizontal: Bool) {
+        for i in 0..<data.count {
+            names.append(data[i].0)
+            values.append(data[i].1)
+        }
+
+        self.formatter = formatter
+        self.isHorizontal = isHorizontal
+    }
 
     func getAbsMax() -> Double {
         let max = values.max() ?? 1
