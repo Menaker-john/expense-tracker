@@ -64,8 +64,10 @@ struct HBarView: View {
         HStack {
             Text(name)
             Bar(width: width, height: height, color: value > 0 ? .red : .green)
-            Text(formatter.string(from: NSNumber(value: value)) ?? "")
-                .font(.footnote)
+            if value != 0.0 {
+                Text(formatter.string(from: NSNumber(value: value)) ?? "")
+                    .font(.footnote)
+            }
             Spacer()
         }.padding(.horizontal, 5)
     }
@@ -81,8 +83,10 @@ struct VBarView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text(formatter.string(from: NSNumber(value: value)) ?? "")
-                .font(.footnote)
+            if value != 0.0 {
+                Text(formatter.string(from: NSNumber(value: value)) ?? "")
+                    .font(.footnote)
+            }
             Bar(width: width, height: height, color: value > 0 ? .red : .green)
             Text(name)
                 .frame(width: CGFloat(width))
