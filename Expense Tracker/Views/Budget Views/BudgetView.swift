@@ -12,7 +12,7 @@ struct BudgetView: View {
     @ObservedRealmObject var budget: Budget
     @State private var showingEdit = false
 
-    var dateRange: ClosedRange<Date> {
+    private var dateRange: ClosedRange<Date> {
         let min = budget.startDate
         var max = budget.endDate
         if min > max {
@@ -23,14 +23,17 @@ struct BudgetView: View {
 
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
+            HStack() {
                 TextField("New Budget", text: $budget.name)
-                    .font(.title)
+                    .font(.title2)
                     .padding(7)
                     .padding(.horizontal, 25)
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
                     .disabled(budget.isArchived)
+                Spacer()
+                let balance = budget.calculateBalance()
+                ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
             }
             .padding()
 
@@ -59,6 +62,25 @@ struct BudgetView: View {
                 .onMove(perform: $budget.records.move)
                 .disabled(budget.isArchived)
             }
+            HStack {
+                Button(action: {
+                    $budget.records.append(Record(isExpense: false, date: budget.startDate))
+                }) {
+                    Text("Add Income")
+                    ColoredMoney(amount: budget.calculateIncome(), isRed: false)
+                }
+                Spacer()
+                Button(action: {
+                    $budget.records.append(Record(isExpense: true, date: budget.startDate))
+                }) {
+                    Text("Add Expense")
+                    ColoredMoney(amount: budget.calculateExpense(), isRed: true)
+                }
+
+            }
+            .padding()
+            .disabled(budget.isArchived)
+            Divider()
         }
         .padding([.top, .bottom])
         .if(!budget.isAdvanced) { view in
@@ -70,7 +92,7 @@ struct BudgetView: View {
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button(action: {
-                    showingEdit.toggle()
+                    showingEdit = true
                 }) {
                     Text("Settings")
                 }
@@ -80,30 +102,5 @@ struct BudgetView: View {
         .sheet(isPresented: $showingEdit) {
             BudgetOptionsView(budget: budget)
         }
-
-        Spacer()
-        HStack {
-            Button(action: {
-                $budget.records.append(Record(isExpense: false))
-            }) {
-                Text("Add Income")
-            }
-            Spacer()
-            Button(action: {
-                $budget.records.append(Record(isExpense: true))
-            }) {
-                Text("Add Expense")
-            }
-        }
-        .padding([.trailing, .leading])
-        .disabled(budget.isArchived)
-
-        Divider()
-        HStack {
-            Text("Balance:")
-            let balance = budget.calculateBalance()
-            ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
-        }
-        Divider()
     }
 }

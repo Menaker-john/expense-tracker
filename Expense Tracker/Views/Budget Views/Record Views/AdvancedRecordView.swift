@@ -31,7 +31,7 @@ struct AdvancedRecordView: View {
 
                 DatePicker("Date",
                            selection: $record.date,
-                           in: dateRange,
+//                           in: dateRange,
                            displayedComponents: [.date]
                 )
 

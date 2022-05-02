@@ -13,7 +13,9 @@ struct YTDSpendingTrendsChart: View {
 
     var budgetsYTD: Results<Budget> {
         return self.budgets
-            .filter("records.@count > 0 AND startDate >= %@", Date.beginningOfCurrentYear())
+            .filter("records.@count > 0")
+            .filter("startDate >= %@", Date.beginningOfCurrentYear())
+            .filter("startDate <= %@", Date.endOfCurrentYear())
     }
 
     func fetchData() -> [(String, Double)] {
@@ -22,7 +24,7 @@ struct YTDSpendingTrendsChart: View {
 
     var body: some View {
         VStack {
-            BarChartView(data: fetchData(), formatter: .money, isHorizontal: false)
+            VBarChartView(data: fetchData(), formatter: .wholeMoney)
         }.navigationTitle("YTD Spending Trends")
     }
 }

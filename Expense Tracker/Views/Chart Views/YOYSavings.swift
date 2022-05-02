@@ -36,7 +36,7 @@ struct YOYSavings: View {
 
     var body: some View {
         VStack {
-            BarChartView(data: fetchData(), formatter: .money, isHorizontal: true)
+            HBarChartView(data: fetchData(), formatter: .money)
         }
         .navigationTitle(getTitle())
     }

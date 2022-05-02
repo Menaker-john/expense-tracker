@@ -21,6 +21,13 @@ extension Formatter {
         return formatter
     }()
 
+    static let wholeMoney: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 0
+        return formatter
+    }()
+
     static let date: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd"

@@ -11,7 +11,7 @@ struct BudgetsService {
 
     static fileprivate func calculateTotals(_ budgets: Results<Budget>) -> [String: Double] {
         let keyValuePairs = budgets.reduce(into: []) { results, budget in
-            results.append(contentsOf: budget.getExpenseTotalsPerCategoryKVP())
+            results.append(contentsOf: budget.getExpenseTotalsPerCategory())
         }
         return Dictionary(keyValuePairs, uniquingKeysWith: { $0 + $1 })
     }
@@ -63,7 +63,7 @@ struct BudgetsService {
         for budget in budgets {
             for record in budget.records {
                 let month = record.date.monthIndex()
-                if record.isExpense && month <= currentMonth {
+                if record.isExpense && month < currentMonth {
                     values[month] = values[month] + record.amount
                 }
             }

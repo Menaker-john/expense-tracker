@@ -18,7 +18,6 @@
 		529081D227E4E7090066115D /* FormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081D127E4E7090066115D /* FormatterExtension.swift */; };
 		529081D427E4E7CF0066115D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081D327E4E7CF0066115D /* ViewExtension.swift */; };
 		52ABC8052803AD410005C061 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABC8042803AD410005C061 /* SearchBar.swift */; };
-		52ABD1A52814A676003EA81F /* GraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABD1A42814A676003EA81F /* GraphData.swift */; };
 		52B282E6281205C400564341 /* YTDSpendingTrendsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B282E5281205C400564341 /* YTDSpendingTrendsChart.swift */; };
 		52B282E82812067000564341 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B282E72812067000564341 /* BarChartView.swift */; };
 		52B282EA2812109700564341 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B282E92812109700564341 /* DateExtension.swift */; };
@@ -72,7 +71,6 @@
 		529081D327E4E7CF0066115D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		529081D627E4EC240066115D /* Expense-Tracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Expense-Tracker-Info.plist"; sourceTree = SOURCE_ROOT; };
 		52ABC8042803AD410005C061 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		52ABD1A42814A676003EA81F /* GraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphData.swift; sourceTree = "<group>"; };
 		52B282E5281205C400564341 /* YTDSpendingTrendsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTDSpendingTrendsChart.swift; sourceTree = "<group>"; };
 		52B282E72812067000564341 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		52B282E92812109700564341 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 			children = (
 				52C160E32773EB33001BC665 /* Budget.swift */,
 				529081CC27E4E2990066115D /* Record.swift */,
-				52ABD1A42814A676003EA81F /* GraphData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -461,7 +458,6 @@
 				52C61E00276E314000C3374A /* ContentView.swift in Sources */,
 				528B35F227A49BF500F52E2C /* Categories.swift in Sources */,
 				52C160E42773EB33001BC665 /* Budget.swift in Sources */,
-				52ABD1A52814A676003EA81F /* GraphData.swift in Sources */,
 				52C61DFE276E314000C3374A /* Expense_TrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

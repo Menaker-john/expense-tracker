@@ -9,13 +9,12 @@ import SwiftUI
 
 struct Card: View {
     @State var title: String
-
+    var color: Color
     var body: some View {
         Text(title)
             .frame(maxWidth: .infinity)
-            .foregroundColor(.black)
             .padding(.vertical, 40)
-            .background(Color(.systemGray6))
-            .cornerRadius(10)
+            .background(color)
+            .cornerRadius(20)
     }
 }

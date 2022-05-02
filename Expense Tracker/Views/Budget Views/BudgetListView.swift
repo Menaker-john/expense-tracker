@@ -9,14 +9,14 @@ import SwiftUI
 import RealmSwift
 
 struct BudgetListView: View {
-    @ObservedResults(Budget.self) var budgets
+    @ObservedResults(Budget.self) private var budgets
 
-    @State var searchText: String = ""
-    @State var isSearching: Bool = false
-    @State var isEditing: Bool = false
-    @State var isShowingArchived: Bool = false
+    @State private var searchText: String = ""
+    @State private var isSearching: Bool = false
+    @State private var isEditing: Bool = false
+    @State private var isShowingArchived: Bool = false
 
-    var searchResults: Results<Budget> {
+    private var searchResults: Results<Budget> {
         if searchText.isEmpty {
             return self.budgets
                 .filter("isArchived = %@", isShowingArchived)
@@ -80,6 +80,14 @@ struct BudgetListView: View {
         }
     }
 
+    fileprivate func onAddNew() {
+        let newBudget = Budget()
+        if let prevIndex = budgets.sorted(byKeyPath: "index", ascending: true).last?.index {
+            newBudget.index = prevIndex + 1
+        }
+        $budgets.append(newBudget)
+    }
+
     var body: some View {
         NavigationView {
             VStack {
@@ -117,13 +125,7 @@ struct BudgetListView: View {
                             }
                         }
 
-                        Button(action: {
-                            let newBudget = Budget()
-                            if let prevIndex = budgets.sorted(byKeyPath: "index", ascending: true).last?.index {
-                                newBudget.index = prevIndex + 1
-                            }
-                            $budgets.append(newBudget)
-                        }) {
+                        Button(action: onAddNew) {
                             Text("Add New")
                         }
                         .disabled(isShowingArchived)

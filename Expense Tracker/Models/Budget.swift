@@ -25,15 +25,29 @@ final class Budget: Object, ObjectKeyIdentifiable {
     }
 
     func calculateBalance() -> Double {
-        var total = 0.0
-        for record in self.records {
+        return records.reduce(into: 0.0) { partialResult, record in
             if record.isExpense {
-                total -= record.amount
+                partialResult -= record.amount
             } else {
-                total += record.amount
+                partialResult += record.amount
             }
         }
-        return total
+    }
+
+    func calculateIncome() -> Double {
+        return records.reduce(into: 0.0) { partialResult, record in
+            if !record.isExpense {
+                partialResult += record.amount
+            }
+        }
+    }
+
+    func calculateExpense() -> Double {
+        return records.reduce(into: 0.0) { partialResult, record in
+            if record.isExpense {
+                partialResult += record.amount
+            }
+        }
     }
 
     func getExpenseRecordsOverZero() -> [Record] {
@@ -42,13 +56,7 @@ final class Budget: Object, ObjectKeyIdentifiable {
         }
     }
 
-    func getExpenseTotalsPerCategory() -> [String: Double] {
-        getExpenseRecordsOverZero().reduce(into: [:]) {(result, record) in
-            result[record.category] = (result[record.category] ?? 0) + record.amount
-        }
-    }
-
-    func getExpenseTotalsPerCategoryKVP() -> [(String, Double)] {
+    func getExpenseTotalsPerCategory() -> [(String, Double)] {
         return getExpenseRecordsOverZero().map { ($0.category, $0.amount)}
     }
 

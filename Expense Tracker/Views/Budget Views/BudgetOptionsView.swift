@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct BudgetOptionsView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @ObservedRealmObject var budget: Budget
 
     var body: some View {
@@ -22,12 +22,8 @@ struct BudgetOptionsView: View {
                         TextField("", text: $budget.name)
                     }
                     Toggle("Advanced Budget", isOn: $budget.isAdvanced)
-                    if budget.name != "" {
-                        Toggle("Archive Budget", isOn: $budget.isArchived)
-                    }
                 }
 
-                // TODO: On change of either startDate or endDate could allow for record dates to be outside the date range on the budget.
                 Section(header: Text("Date Range")) {
                     DatePicker("Start Date", selection: $budget.startDate, displayedComponents: [.date])
                     DatePicker("End Date", selection: $budget.endDate, displayedComponents: [.date])
@@ -36,7 +32,7 @@ struct BudgetOptionsView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     }) {
                         Text("Dismiss")
                     }
