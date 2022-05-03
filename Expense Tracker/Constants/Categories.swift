@@ -21,7 +21,7 @@ let Categories: [String: Category] = [
     "Transportation": Category(image: "car", color: Color.gray.opacity(0.3)),
     "Cosmetics": Category(image: "hands.sparkles", color: Color.green.opacity(0.3)),
     "Clothing": Category(image: "tshirt", color: Color.red.opacity(0.3)),
-    "Take Out": Category(image: "takeoutbag.and.cup.and.straw", color: Color.pink.opacity(0.3)),
+    "Food": Category(image: "takeoutbag.and.cup.and.straw", color: Color.pink.opacity(0.3)),
     "Utilities": Category(image: "lightbulb", color: Color.orange.opacity(0.3)),
     "Entertainment": Category(image: "film", color: Color.purple.opacity(0.3)),
     "Miscellaneous": Category(image: "folder", color: Color.yellow.opacity(0.3)),

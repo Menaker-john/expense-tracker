@@ -29,13 +29,32 @@ struct BudgetListView: View {
         }
     }
 
-    fileprivate func deleteBudget(offsets: IndexSet) {
-        if let index = offsets.first {
+    fileprivate func deleteBudget(_ index: Int) {
+        if index < searchResults.count {
             let thawedBudget = searchResults[index].thaw()
             let thawedRealm = thawedBudget!.realm!
             try! thawedRealm.write {
                 if let budget = thawedBudget {
                     thawedRealm.delete(budget)
+                }
+
+                for i in index..<searchResults.count {
+                    let thawedBudget = searchResults[i].thaw()
+                    if let budget = thawedBudget {
+                        budget.index -= 1
+                    }
+                }
+            }
+        }
+    }
+
+    fileprivate func archiveBudget(_ index: Int) {
+        if index < searchResults.count {
+            let thawedBudget = searchResults[index].thaw()
+            let thawedRealm = thawedBudget!.realm!
+            try! thawedRealm.write {
+                if let budget = thawedBudget {
+                    budget.isArchived = true
                 }
 
                 for i in index..<searchResults.count {
@@ -97,7 +116,7 @@ struct BudgetListView: View {
                         self.isEditing = false
                     }
                 List {
-                    ForEach(searchResults, id: \.id) { budget in
+                    ForEach(Array(searchResults.enumerated()), id: \.offset) { index, budget in
                         NavigationLink {
                             BudgetView(budget: budget)
                         } label: {
@@ -106,8 +125,19 @@ struct BudgetListView: View {
                             let balance = budget.calculateBalance()
                             ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
                         }
+                        .if(!element.isArchived) { view in
+                            view.swipeActions(edge: .leading) {
+                                Button("Archive") {
+                                    archiveBudget(index)
+                                }
+                            }
+                        }
+                        .swipeActions(edge: .trailing) {
+                            Button("Delete", role: .destructive) {
+                                deleteBudget(index)
+                            }
+                        }
                     }
-                    .onDelete(perform: deleteBudget)
                     .onMove(perform: moveBudget)
                 }
                 .environment(\.editMode, .constant(isEditing ? EditMode.active : EditMode.inactive))
