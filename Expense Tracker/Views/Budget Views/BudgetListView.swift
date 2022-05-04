@@ -67,6 +67,23 @@ struct BudgetListView: View {
         }
     }
 
+    fileprivate func restoreBudget(_ index: Int) {
+        if index < searchResults.count {
+            let thawedBudget = searchResults[index].thaw()
+            let thawedRealm = thawedBudget!.realm!
+
+            let newIndex = thawedRealm.objects(Budget.self)
+                .filter("isArchived == false").count
+
+            try! thawedRealm.write {
+                if let budget = thawedBudget {
+                    budget.isArchived = false
+                    budget.index = newIndex
+                }
+            }
+        }
+    }
+
     fileprivate func moveBudget(source: IndexSet, destination: Int) {
         if let oldIndex = source.first, oldIndex != destination {
             var newIndex: Int
@@ -125,13 +142,24 @@ struct BudgetListView: View {
                             let balance = budget.calculateBalance()
                             ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
                         }
-                        .if(!element.isArchived) { view in
-                            view.swipeActions(edge: .leading) {
+                        .swipeActions(edge: .leading) {
+                            if budget.isArchived {
+                                Button("Restore") {
+                                    restoreBudget(index)
+                                }
+                            } else {
                                 Button("Archive") {
                                     archiveBudget(index)
                                 }
                             }
                         }
+//                        .if(!budget.isArchived) { view in
+//                            view.swipeActions(edge: .leading) {
+//                                Button("Archive") {
+//                                    archiveBudget(index)
+//                                }
+//                            }
+//                        }
                         .swipeActions(edge: .trailing) {
                             Button("Delete", role: .destructive) {
                                 deleteBudget(index)

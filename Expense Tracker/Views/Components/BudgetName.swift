@@ -12,10 +12,7 @@ struct BudgetName: View {
     var isArchived: Bool
 
     var body: some View {
-        if name == "" {
-            Text("New Budget")
-        } else {
-            Text("\(name) \(isArchived ? "(Archived)" : "")")
-        }
+        let budgetName = (name == "" ? "New Budget" : name) + ( isArchived ? "(Archived)" : "")
+        Text(budgetName)
     }
 }
