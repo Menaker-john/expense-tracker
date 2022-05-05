@@ -153,13 +153,6 @@ struct BudgetListView: View {
                                 }
                             }
                         }
-//                        .if(!budget.isArchived) { view in
-//                            view.swipeActions(edge: .leading) {
-//                                Button("Archive") {
-//                                    archiveBudget(index)
-//                                }
-//                            }
-//                        }
                         .swipeActions(edge: .trailing) {
                             Button("Delete", role: .destructive) {
                                 deleteBudget(index)

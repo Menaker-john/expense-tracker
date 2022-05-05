@@ -16,11 +16,11 @@ struct ExpenseOverviewChart: View {
     var searchResults: Results<Budget> {
         if searchText.isEmpty {
             return self.budgets
-                .filter("records.@count > 0")
+                .filter("ANY records.isExpense == true")
                 .sorted(byKeyPath: "name", ascending: true)
         } else {
             return self.budgets
-                .filter("records.@count > 0")
+                .filter("ANY records.isExpense == true")
                 .filter("name CONTAINS[c] %@", searchText)
                 .sorted(byKeyPath: "name", ascending: true)
         }

@@ -21,7 +21,7 @@ extension Formatter {
         return formatter
     }()
 
-    static let wholeMoney: NumberFormatter = {
+    static let intMoney: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.maximumFractionDigits = 0

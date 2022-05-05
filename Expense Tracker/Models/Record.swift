@@ -10,21 +10,26 @@ import RealmSwift
 
 final class Record: EmbeddedObject, ObjectKeyIdentifiable {
     @Persisted var id: ObjectId
-    @Persisted var name: String = ""
+    @Persisted var name: String
     @Persisted var date: Date
-    @Persisted var category: String = "Expense"
+    @Persisted var category: String
     @Persisted var isExpense: Bool
-    @Persisted var notes: String = ""
-    @Persisted var amount: Double = 0.0
+    @Persisted var notes: String
+    @Persisted var amount: Double
 
     convenience init(isExpense: Bool, date: Date = Date()) {
         self.init()
         self.id = ObjectId.generate()
+        self.name = ""
+        self.date = date
+        self.notes = ""
+        self.amount = 0.0
         self.isExpense = isExpense
-        if !isExpense {
+        if isExpense {
+            self.category = "Expense"
+        } else {
             self.category = "Income"
         }
-        self.date = date
     }
 
     convenience init(_ current: Record) {

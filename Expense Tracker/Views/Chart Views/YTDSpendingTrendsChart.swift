@@ -24,7 +24,7 @@ struct YTDSpendingTrendsChart: View {
 
     var body: some View {
         VStack {
-            VBarChartView(data: fetchData(), formatter: .wholeMoney)
+            VBarChartView(data: fetchData(), formatter: .intMoney)
         }.navigationTitle("YTD Spending Trends")
     }
 }
