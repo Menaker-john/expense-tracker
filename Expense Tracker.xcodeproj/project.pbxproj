@@ -23,7 +23,6 @@
 		52B282EA2812109700564341 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B282E92812109700564341 /* DateExtension.swift */; };
 		52B5DA1E27A0BC8200EACD38 /* ChartsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1D27A0BC8200EACD38 /* ChartsNavigationView.swift */; };
 		52B5DA2027A0BFE900EACD38 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */; };
-		52BD5B272816F6D000A594C4 /* ConditionalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD5B262816F6D000A594C4 /* ConditionalStack.swift */; };
 		52BD5B2A2817510700A594C4 /* BudgetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD5B292817510700A594C4 /* BudgetsService.swift */; };
 		52C160E42773EB33001BC665 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C160E32773EB33001BC665 /* Budget.swift */; };
 		52C160E62773EE0E001BC665 /* BudgetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C160E52773EE0E001BC665 /* BudgetListView.swift */; };
@@ -76,7 +75,6 @@
 		52B282E92812109700564341 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		52B5DA1D27A0BC8200EACD38 /* ChartsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsNavigationView.swift; sourceTree = "<group>"; };
 		52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
-		52BD5B262816F6D000A594C4 /* ConditionalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalStack.swift; sourceTree = "<group>"; };
 		52BD5B292817510700A594C4 /* BudgetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetsService.swift; sourceTree = "<group>"; };
 		52C160E32773EB33001BC665 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		52C160E52773EE0E001BC665 /* BudgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListView.swift; sourceTree = "<group>"; };
@@ -125,13 +123,10 @@
 		528C991127920D80001CC52E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */,
 				525EE627279B65A000419AA9 /* ColoredMoney.swift */,
 				52ABC8042803AD410005C061 /* SearchBar.swift */,
 				52C5B3502804E4EE008AF3C2 /* BudgetName.swift */,
 				528B24F9280E21C7008AA621 /* Card.swift */,
-				52B282E72812067000564341 /* BarChartView.swift */,
-				52BD5B262816F6D000A594C4 /* ConditionalStack.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -150,6 +145,7 @@
 		528E6D4B2810BD4700900D0D /* Chart Views */ = {
 			isa = PBXGroup;
 			children = (
+				52B264C62825D0ED0076D23D /* Charts */,
 				528B24F7280E1F2E008AA621 /* ExpenseOverviewChart.swift */,
 				52B5DA1D27A0BC8200EACD38 /* ChartsNavigationView.swift */,
 				52B282E5281205C400564341 /* SpendingTrendsChart.swift */,
@@ -183,6 +179,15 @@
 				528B35F127A49BF500F52E2C /* Categories.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		52B264C62825D0ED0076D23D /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				52B5DA1F27A0BFE900EACD38 /* PieChartView.swift */,
+				52B282E72812067000564341 /* BarChartView.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		52BD5B28281750D100A594C4 /* Services */ = {
@@ -444,7 +449,6 @@
 				529081C927E4E1D30066115D /* AdvancedRecordView.swift in Sources */,
 				52ABC8052803AD410005C061 /* SearchBar.swift in Sources */,
 				52B5DA1E27A0BC8200EACD38 /* ChartsNavigationView.swift in Sources */,
-				52BD5B272816F6D000A594C4 /* ConditionalStack.swift in Sources */,
 				529081C527E4E0670066115D /* BudgetOptionsView.swift in Sources */,
 				52B282E6281205C400564341 /* SpendingTrendsChart.swift in Sources */,
 				52B282E82812067000564341 /* BarChartView.swift in Sources */,

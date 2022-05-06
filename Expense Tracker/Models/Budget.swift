@@ -60,4 +60,10 @@ final class Budget: Object, ObjectKeyIdentifiable {
         return getExpenseRecordsOverZero().map { ($0.category, $0.amount)}
     }
 
+    func getSortedExpenseTotalsPerCategory() -> [(String, Double)] {
+        let expenses = getExpenseTotalsPerCategory()
+        return Dictionary(expenses, uniquingKeysWith: { $0 + $1 })
+            .sorted { $0.value > $1.value }
+    }
+
 }

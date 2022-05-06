@@ -14,7 +14,6 @@ final class Record: EmbeddedObject, ObjectKeyIdentifiable {
     @Persisted var date: Date
     @Persisted var category: String
     @Persisted var isExpense: Bool
-    @Persisted var notes: String
     @Persisted var amount: Double
 
     convenience init(isExpense: Bool, date: Date = Date()) {
@@ -22,7 +21,6 @@ final class Record: EmbeddedObject, ObjectKeyIdentifiable {
         self.id = ObjectId.generate()
         self.name = ""
         self.date = date
-        self.notes = ""
         self.amount = 0.0
         self.isExpense = isExpense
         if isExpense {
@@ -40,6 +38,5 @@ final class Record: EmbeddedObject, ObjectKeyIdentifiable {
         self.date = current.date
         self.category = current.category
         self.isExpense = current.isExpense
-        self.notes = current.notes
     }
 }

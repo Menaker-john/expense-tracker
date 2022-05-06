@@ -29,11 +29,7 @@ struct AdvancedRecordView: View {
                         .keyboardType(.decimalPad)
                 }
 
-                DatePicker("Date",
-                           selection: $record.date,
-//                           in: dateRange,
-                           displayedComponents: [.date]
-                )
+                DatePicker("Date", selection: $record.date, displayedComponents: [.date])
 
                 HStack {
                     Text("Category")
@@ -53,12 +49,6 @@ struct AdvancedRecordView: View {
                         Image(systemName: "dollarsign.circle")
                         Text("Income")
                     }
-
-                }
-
-                VStack(alignment: .leading) {
-                    Text("Description")
-                    TextField("", text: $record.notes)
                 }
             }
 

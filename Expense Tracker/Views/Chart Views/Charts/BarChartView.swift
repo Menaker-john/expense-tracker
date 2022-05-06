@@ -83,6 +83,7 @@ struct HBarChartView: View {
                 VStack {
                     Text(title ?? "")
                         .padding()
+                    Spacer()
                     HStack {
                         ForEach(0..<self.values.count, id: \.self) { i in
                             let name = self.names[i]

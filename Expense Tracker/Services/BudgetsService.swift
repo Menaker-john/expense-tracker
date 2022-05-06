@@ -16,7 +16,7 @@ struct BudgetsService {
         return Dictionary(expenses, uniquingKeysWith: { $0 + $1 })
     }
 
-    static fileprivate func calculateDifference(lhs: [String: Double], rhs: [String: Double]) -> [String: Double] {
+    static fileprivate func calculateSavings(lhs: [String: Double], rhs: [String: Double]) -> [String: Double] {
         var data: [String: Double] = [:]
         var keys = Array(rhs.keys)
         keys.append(contentsOf: lhs.keys)
@@ -27,7 +27,7 @@ struct BudgetsService {
         return data
     }
 
-    static fileprivate func sortDifferences(_ differences: [String: Double]) -> [(String, Double)] {
+    static fileprivate func sortSavings(_ differences: [String: Double]) -> [(String, Double)] {
         return differences.filter { (_: String, value: Double) in
             abs(value) > 0
         }.sorted { $0.value < $1.value }
@@ -36,8 +36,8 @@ struct BudgetsService {
     static fileprivate func getSortedSavings(previous: Results<Budget>, current: Results<Budget>) -> [(String, Double)] {
         let previousYearsData = calculateTotals(previous)
         let currentYearsData = calculateTotals(current)
-        let savings = calculateDifference(lhs: previousYearsData, rhs: currentYearsData)
-        return sortDifferences(savings)
+        let savings = calculateSavings(lhs: previousYearsData, rhs: currentYearsData)
+        return sortSavings(savings)
     }
 
     static fileprivate func getTopSavings(previous: Results<Budget>, current: Results<Budget>) -> [(String, Double)] {
