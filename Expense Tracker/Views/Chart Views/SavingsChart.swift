@@ -1,5 +1,5 @@
 //
-//  YOYTopSavings.swift
+//  SavingsChart.swift
 //  Expense Tracker
 //
 //  Created by John Menaker on 4/22/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct YOYSavings: View {
+struct SavingsChart: View {
     @ObservedResults(Budget.self) var budgets
     var showTopSavings: Bool
 
@@ -27,16 +27,18 @@ struct YOYSavings: View {
     }
 
     func getTitle() -> String {
-        return "YOY \(showTopSavings ? "Top" : "Bottom") Savings"
+        return "\(showTopSavings ? "Top" : "Bottom") Savings"
     }
 
     func fetchData() -> [(String, Double)] {
-        return BudgetsService.getThreeSavings(previous: previousYearsBudgets, current: currentYearsBudgets, showTop: showTopSavings)
+        return BudgetsService.getSavings(previous: previousYearsBudgets, current: currentYearsBudgets, showTopSavings: showTopSavings)
     }
 
     var body: some View {
+        let lastYear = Date.beginningOfPreviousYear().yearString()
+        let thisYear = Date.beginningOfCurrentYear().yearString()
         VStack {
-            HBarChartView(data: fetchData(), formatter: .money)
+            HBarChartView(data: fetchData(), formatter: .money, title: "\(lastYear) - \(thisYear)")
         }
         .navigationTitle(getTitle())
     }

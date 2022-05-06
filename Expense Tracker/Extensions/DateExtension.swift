@@ -36,4 +36,14 @@ extension Date {
     func monthIndex() -> Int {
         return Calendar.current.component(.month, from: self) - 1
     }
+
+    func yearIndex() -> Int {
+        return Calendar.current.component(.year, from: self)
+    }
+
+    func yearString() -> String {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = ""
+        return formatter.string(from: NSNumber(value: self.yearIndex())) ?? ""
+    }
 }

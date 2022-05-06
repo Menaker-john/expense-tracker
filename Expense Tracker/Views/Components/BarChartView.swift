@@ -60,14 +60,16 @@ struct HBarChartView: View {
     var names: [String] = []
     var values: [Double] = []
     let formatter: NumberFormatter
+    let title: String?
 
-    init(data: [(String, Double)], formatter: NumberFormatter) {
+    init(data: [(String, Double)], formatter: NumberFormatter, title: String?) {
         for i in 0..<data.count {
             names.append(data[i].0)
             values.append(data[i].1)
         }
 
         self.formatter = formatter
+        self.title = title
     }
 
     var body: some View {
@@ -78,21 +80,25 @@ struct HBarChartView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 5.0)
                     .fill(Color(.systemGray6))
-                HStack {
-                    ForEach(0..<self.values.count, id: \.self) { i in
-                        let name = self.names[i]
-                        let value = self.values[i]
-                        let barWidth = width / CGFloat(values.count)
+                VStack {
+                    Text(title ?? "")
+                        .padding()
+                    HStack {
+                        ForEach(0..<self.values.count, id: \.self) { i in
+                            let name = self.names[i]
+                            let value = self.values[i]
+                            let barWidth = width / CGFloat(values.count)
 
-                        VStack {
-                            Spacer()
-                            Text(formatter.string(from: NSNumber(value: value)) ?? "")
-                                .font(.footnote)
-                            Bar(width: barWidth, height: (height / maxValue * abs(self.values[i])), color: value >= 0 ? .red : .green)
-                            Text(name)
-                                .frame(width: CGFloat(barWidth))
-                                .lineLimit(1)
-                                .truncationMode(.tail)
+                            VStack {
+                                Spacer()
+                                Text(formatter.string(from: NSNumber(value: value)) ?? "")
+                                    .font(.footnote)
+                                Bar(width: barWidth, height: (height / maxValue * abs(self.values[i])), color: value >= 0 ? .red : .green)
+                                Text(name)
+                                    .frame(width: CGFloat(barWidth))
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
+                            }
                         }
                     }
                 }

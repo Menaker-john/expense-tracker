@@ -28,7 +28,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Budgets", systemImage: "chart.bar.doc.horizontal")
                 }
-            ChartsView()
+            ChartsNavigationView()
                 .tabItem {
                     Label("Charts", systemImage: "chart.pie")
                 }

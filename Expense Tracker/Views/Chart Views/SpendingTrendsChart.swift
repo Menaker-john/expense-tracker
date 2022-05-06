@@ -1,5 +1,5 @@
 //
-//  YTDSpendingTrendsChart.swift
+//  SpendingTrendsChart.swift
 //  Expense Tracker
 //
 //  Created by John Menaker on 4/21/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct YTDSpendingTrendsChart: View {
+struct SpendingTrendsChart: View {
     @ObservedResults(Budget.self) var budgets
 
     var budgetsYTD: Results<Budget> {
@@ -19,7 +19,7 @@ struct YTDSpendingTrendsChart: View {
     }
 
     func fetchData() -> [(String, Double)] {
-        return BudgetsService.getYTDSpending(budgets: budgetsYTD)
+        return BudgetsService.getSpendingTrends(budgets: budgetsYTD)
     }
 
     var body: some View {
