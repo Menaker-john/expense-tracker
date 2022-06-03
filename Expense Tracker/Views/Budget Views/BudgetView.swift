@@ -14,11 +14,9 @@ struct BudgetView: View {
 
     private var dateRange: ClosedRange<Date> {
         let min = budget.startDate
-        var max = budget.endDate
-        if min > max {
-            max = min
-        }
-        return min...max
+        let max = budget.endDate
+
+        return min > max ? min...min : min...max
     }
 
     var body: some View {
@@ -37,7 +35,7 @@ struct BudgetView: View {
             }
             .padding()
 
-            SwiftUI.List {
+            List {
                 ForEach(budget.records, id: \.id) { record in
                     if budget.isAdvanced {
                         NavigationLink {

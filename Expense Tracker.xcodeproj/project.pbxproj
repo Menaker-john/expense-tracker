@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		525EE628279B65A000419AA9 /* ColoredMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EE627279B65A000419AA9 /* ColoredMoney.swift */; };
 		528B24F8280E1F2E008AA621 /* ExpenseOverviewChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B24F7280E1F2E008AA621 /* ExpenseOverviewChart.swift */; };
-		528B24FA280E21C7008AA621 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B24F9280E21C7008AA621 /* Card.swift */; };
 		528B35F227A49BF500F52E2C /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B35F127A49BF500F52E2C /* Categories.swift */; };
 		529081C527E4E0670066115D /* BudgetOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081C427E4E0670066115D /* BudgetOptionsView.swift */; };
 		529081C727E4E1A30066115D /* RecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529081C627E4E1A30066115D /* RecordRowView.swift */; };
@@ -60,7 +59,6 @@
 /* Begin PBXFileReference section */
 		525EE627279B65A000419AA9 /* ColoredMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredMoney.swift; sourceTree = "<group>"; };
 		528B24F7280E1F2E008AA621 /* ExpenseOverviewChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseOverviewChart.swift; sourceTree = "<group>"; };
-		528B24F9280E21C7008AA621 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		528B35F127A49BF500F52E2C /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		529081C427E4E0670066115D /* BudgetOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOptionsView.swift; sourceTree = "<group>"; };
 		529081C627E4E1A30066115D /* RecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRowView.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 				525EE627279B65A000419AA9 /* ColoredMoney.swift */,
 				52ABC8042803AD410005C061 /* SearchBar.swift */,
 				52C5B3502804E4EE008AF3C2 /* BudgetName.swift */,
-				528B24F9280E21C7008AA621 /* Card.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -443,7 +440,6 @@
 				529081C727E4E1A30066115D /* RecordRowView.swift in Sources */,
 				52BD5B2A2817510700A594C4 /* BudgetsService.swift in Sources */,
 				52B5DA2027A0BFE900EACD38 /* PieChartView.swift in Sources */,
-				528B24FA280E21C7008AA621 /* Card.swift in Sources */,
 				528B24F8280E1F2E008AA621 /* ExpenseOverviewChart.swift in Sources */,
 				529081CD27E4E2990066115D /* Record.swift in Sources */,
 				529081C927E4E1D30066115D /* AdvancedRecordView.swift in Sources */,
@@ -627,6 +623,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Expense-Tracker-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Expense Tracker";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
@@ -658,6 +655,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Expense-Tracker-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Expense Tracker";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";

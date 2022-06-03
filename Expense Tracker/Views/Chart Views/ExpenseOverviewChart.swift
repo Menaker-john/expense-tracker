@@ -14,13 +14,14 @@ struct ExpenseOverviewChart: View {
     @State var isSearching: Bool = false
 
     var searchResults: Results<Budget> {
+        let filteredBudgets = self.budgets
+            .filter("ANY records.isExpense == true")
+
         if searchText.isEmpty {
-            return self.budgets
-                .filter("ANY records.isExpense == true")
+            return filteredBudgets
                 .sorted(byKeyPath: "name", ascending: true)
         } else {
-            return self.budgets
-                .filter("ANY records.isExpense == true")
+            return filteredBudgets
                 .filter("name CONTAINS[c] %@", searchText)
                 .sorted(byKeyPath: "name", ascending: true)
         }

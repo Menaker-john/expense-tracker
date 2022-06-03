@@ -17,103 +17,107 @@ struct BudgetListView: View {
     @State private var isShowingArchived: Bool = false
 
     private var searchResults: Results<Budget> {
+        let filteredBudgets = self.budgets.filter("isArchived = %@", isShowingArchived)
+
         if searchText.isEmpty {
-            return self.budgets
-                .filter("isArchived = %@", isShowingArchived)
+            return filteredBudgets
                 .sorted(byKeyPath: isShowingArchived ? "startDate" : "index", ascending: true)
         } else {
-            return self.budgets
-                .filter("isArchived = %@", isShowingArchived)
+            return filteredBudgets
                 .filter("name CONTAINS[c] %@ OR ANY records.category CONTAINS[c] %@", searchText, searchText)
                 .sorted(byKeyPath: "name", ascending: true)
         }
     }
 
-    fileprivate func deleteBudget(_ index: Int) {
-        if index < searchResults.count {
-            let thawedBudget = searchResults[index].thaw()
-            let thawedRealm = thawedBudget!.realm!
-            try! thawedRealm.write {
-                if let budget = thawedBudget {
-                    thawedRealm.delete(budget)
-                }
+    fileprivate func shiftIndexValuesDown(_ index: Int) {
+        for i in index..<searchResults.count {
+            let thawedBudget = searchResults[i].thaw()
 
-                for i in index..<searchResults.count {
-                    let thawedBudget = searchResults[i].thaw()
-                    if let budget = thawedBudget {
-                        budget.index -= 1
-                    }
-                }
+            if let budget = thawedBudget {
+                budget.index -= 1
             }
+        }
+    }
+
+    fileprivate func deleteBudget(_ index: Int) {
+        guard index < searchResults.count else { return }
+
+        let thawedBudget = searchResults[index].thaw()
+        let thawedRealm = thawedBudget!.realm!
+
+        try! thawedRealm.write {
+            if let budget = thawedBudget {
+                thawedRealm.delete(budget)
+            }
+
+            shiftIndexValuesDown(index)
         }
     }
 
     fileprivate func archiveBudget(_ index: Int) {
-        if index < searchResults.count {
-            let thawedBudget = searchResults[index].thaw()
-            let thawedRealm = thawedBudget!.realm!
-            try! thawedRealm.write {
-                if let budget = thawedBudget {
-                    budget.isArchived = true
-                }
+        guard index < searchResults.count else { return }
 
-                for i in index..<searchResults.count {
-                    let thawedBudget = searchResults[i].thaw()
-                    if let budget = thawedBudget {
-                        budget.index -= 1
-                    }
-                }
+        let thawedBudget = searchResults[index].thaw()
+        let thawedRealm = thawedBudget!.realm!
+
+        try! thawedRealm.write {
+            if let budget = thawedBudget {
+                budget.isArchived = true
             }
+
+            shiftIndexValuesDown(index)
         }
     }
 
     fileprivate func restoreBudget(_ index: Int) {
-        if index < searchResults.count {
-            let thawedBudget = searchResults[index].thaw()
-            let thawedRealm = thawedBudget!.realm!
+        guard index < searchResults.count else { return }
 
-            let newIndex = thawedRealm.objects(Budget.self)
-                .filter("isArchived == false").count
+        let thawedBudget = searchResults[index].thaw()
+        let thawedRealm = thawedBudget!.realm!
 
-            try! thawedRealm.write {
-                if let budget = thawedBudget {
-                    budget.isArchived = false
-                    budget.index = newIndex
-                }
+        let newIndex = thawedRealm.objects(Budget.self)
+            .filter("isArchived == false").count
+
+        try! thawedRealm.write {
+            if let budget = thawedBudget {
+                budget.isArchived = false
+                budget.index = newIndex
             }
         }
     }
 
     fileprivate func moveBudget(source: IndexSet, destination: Int) {
-        if let oldIndex = source.first, oldIndex != destination {
-            var newIndex: Int
-            var range: CountableRange<Int>
-            var dir = 1
-            if oldIndex < destination {
-                dir = -1
-                newIndex = destination - 1
-                range = (oldIndex + 1)..<destination
-            } else {
-                newIndex = destination
-                range = newIndex..<oldIndex
+        guard let oldIndex = source.first, oldIndex != destination else { return }
+
+        var newIndex: Int
+        var range: CountableRange<Int>
+        var dir = 1
+
+        if oldIndex < destination {
+            dir = -1
+            newIndex = destination - 1
+            range = (oldIndex + 1)..<destination
+        } else {
+            newIndex = destination
+            range = newIndex..<oldIndex
+        }
+
+        let thawedBudget = searchResults[oldIndex].thaw()
+        let thawedRealm = thawedBudget!.realm!
+
+        try! thawedRealm.write {
+            if let budget = thawedBudget {
+                budget.index = newIndex
             }
 
-            let thawedBudget = searchResults[oldIndex].thaw()
-            let thawedRealm = thawedBudget!.realm!
-
-            try! thawedRealm.write {
+            for index in range {
+                let thawedBudget = searchResults[index].thaw()
                 if let budget = thawedBudget {
-                    budget.index = newIndex
-                }
-
-                for index in range {
-                    let thawedBudget = searchResults[index].thaw()
-                    if let budget = thawedBudget {
-                        budget.index += dir * 1
-                    }
+                    budget.index += dir * 1
                 }
             }
         }
+
     }
 
     fileprivate func onAddNew() {
@@ -125,77 +129,81 @@ struct BudgetListView: View {
     }
 
     var body: some View {
-        NavigationView {
-            VStack {
-                SearchBar(text: $searchText, isSearching: $isSearching)
-                    .onTapGesture {
-                        self.isSearching = true
-                        self.isEditing = false
-                    }
-                List {
-                    ForEach(Array(searchResults.enumerated()), id: \.offset) { index, budget in
-                        NavigationLink {
-                            BudgetView(budget: budget)
-                        } label: {
-                            BudgetName(name: budget.name, isArchived: budget.isArchived)
-                            Spacer()
-                            let balance = budget.calculateBalance()
-                            ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
-                        }
-                        .swipeActions(edge: .leading) {
-                            if budget.isArchived {
-                                Button("Restore") {
-                                    restoreBudget(index)
+        GeometryReader { _ in
+            NavigationView {
+                ZStack {
+                    VStack {
+                        SearchBar(text: $searchText, isSearching: $isSearching)
+                            .onTapGesture {
+                                self.isSearching = true
+                                self.isEditing = false
+                            }
+                        List {
+                            ForEach(Array(searchResults.enumerated()), id: \.offset) { index, budget in
+                                NavigationLink {
+                                    BudgetView(budget: budget)
+                                } label: {
+                                    BudgetName(name: budget.name, isArchived: budget.isArchived)
+                                    Spacer()
+                                    let balance = budget.calculateBalance()
+                                    ColoredMoney(amount: abs(balance), isRed: balance < 0.0)
                                 }
-                            } else {
-                                Button("Archive") {
-                                    archiveBudget(index)
+                                .swipeActions(edge: .leading) {
+                                    if budget.isArchived {
+                                        Button("Restore") {
+                                            restoreBudget(index)
+                                        }
+                                    } else {
+                                        Button("Archive") {
+                                            archiveBudget(index)
+                                        }
+                                    }
+                                }
+                                .swipeActions(edge: .trailing) {
+                                    Button("Delete", role: .destructive) {
+                                        deleteBudget(index)
+                                    }
                                 }
                             }
+                            .onMove(perform: moveBudget)
                         }
-                        .swipeActions(edge: .trailing) {
-                            Button("Delete", role: .destructive) {
-                                deleteBudget(index)
-                            }
-                        }
-                    }
-                    .onMove(perform: moveBudget)
-                }
-                .environment(\.editMode, .constant(isEditing ? EditMode.active : EditMode.inactive))
-                .navigationTitle("Budgets")
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        .environment(\.editMode, .constant(isEditing ? EditMode.active : EditMode.inactive))
+                        .navigationTitle("Budgets")
+                        .toolbar {
+                            ToolbarItemGroup(placement: .navigationBarTrailing) {
 
-                        Button(action: {
-                            self.isShowingArchived.toggle()
-                        }) {
-                            if self.isShowingArchived {
-                                Text("Show Active")
-                            } else {
-                                Text("Show Archived")
+                                Button(action: {
+                                    isShowingArchived.toggle()
+                                }) {
+                                    isShowingArchived ? Text("Show Active") : Text("Show Archived")
+                                }.disabled(isEditing)
+
+                                Button(action: {
+                                    isEditing.toggle()
+                                }) {
+                                    isEditing ? Text("Done") : Text("Sort")
+                                }
+                                .disabled(isSearching || isShowingArchived)
                             }
                         }
+                    }
+                    VStack {
+                        Spacer()
 
                         Button(action: onAddNew) {
-                            Text("Add New")
+                            Text("+")
+                                .font(.title)
+                                .padding()
+                                .background(Color.blue.opacity(0.7))
+                                .clipShape(Circle())
                         }
+                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                        .buttonStyle(PlainButtonStyle())
                         .disabled(isShowingArchived)
-
-                        Button(action: {
-                            self.isEditing.toggle()
-                        }) {
-                            if self.isEditing {
-                                Text("Done")
-                            } else {
-                                Text("Edit")
-                            }
-                        }
-                        .disabled(isSearching || isShowingArchived)
                     }
                 }
             }
-            .padding(.bottom, 15)
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }

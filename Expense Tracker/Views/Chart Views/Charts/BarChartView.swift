@@ -8,9 +8,9 @@
 import SwiftUI
 
 func getAbsMax(_ values: [Double]) -> Double {
-    let max = values.max() ?? 1
-    let min = abs(values.min() ?? 1)
-    return max >= min ? max : min
+    let a = values.max() ?? 1
+    let b = abs(values.min() ?? 1)
+    return max(a, b)
 }
 
 struct VBarChartView: View {
@@ -43,13 +43,19 @@ struct VBarChartView: View {
                         HStack {
                             Text(name)
                                 .frame(width: geometry.size.width * 0.10)
-                            Bar(width: width / maxValue * abs(value + 1), height: height / CGFloat(values.count), color: value >= 0 ? .red : .green)
+                            if value == 0.0 {
+                                Bar(width: 1, height: height / CGFloat(values.count), color: .red)
+                            } else {
+                                Bar(width: width / maxValue * abs(value), height: height / CGFloat(values.count), color: value >= 0 ? .red : .green)
+                            }
+
                             Spacer()
                             Text(formatter.string(from: NSNumber(value: value)) ?? "")
                                 .padding()
                         }
                     }
                 }
+                .padding()
             }
             .padding()
         }
@@ -96,10 +102,12 @@ struct HBarChartView: View {
                                     .font(.footnote)
                                 Bar(width: barWidth, height: (height / maxValue * abs(self.values[i])), color: value >= 0 ? .red : .green)
                                 Text(name)
+                                    .font(.footnote)
                                     .frame(width: CGFloat(barWidth))
                                     .lineLimit(1)
                                     .truncationMode(.tail)
                             }
+                            .padding([.bottom])
                         }
                     }
                 }
