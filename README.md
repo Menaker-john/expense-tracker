@@ -4,8 +4,6 @@
 <!-- About Project -->
 ## About Project
 
-![AdvancedBudget_Transparent](https://user-images.githubusercontent.com/25320915/181866200-07d55ee8-5283-4c9f-8cda-619bd338d8ea.png)
-
 <!-- LICENSE -->
 ## License
 
