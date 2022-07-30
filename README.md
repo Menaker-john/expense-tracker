@@ -18,7 +18,7 @@ The app is built using SwiftUI and Realm-Swift
 
 <!-- Issues -->
 ## Issues
-When typing too fast in a text field the app will freeze. It seems to be a Realm-Swift issue watching the issue in a few spots to see if any progress is made on uncovering why it happens. [https://github.com/realm/realm-swift/issues/7655](https://github.com/realm/realm-swift/issues/7655), [https://www.mongodb.com/community/forums/t/synced-realm-swiftui-typing-freeze/157334](https://www.mongodb.com/community/forums/t/synced-realm-swiftui-typing-freeze/157334)
+When typing too fast in a text field the app will freeze. It seems to be a Realm-Swift issue, I'm watching the issue in a few spots to see if any progress is made on uncovering why it happens. [https://github.com/realm/realm-swift/issues/7655](https://github.com/realm/realm-swift/issues/7655), [https://www.mongodb.com/community/forums/t/synced-realm-swiftui-typing-freeze/157334](https://www.mongodb.com/community/forums/t/synced-realm-swiftui-typing-freeze/157334)
 
 <!-- LICENSE -->
 ## License
